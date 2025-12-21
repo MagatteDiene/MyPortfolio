@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 60" fill="none">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&amp;display=swap');
+    </style>
+  </defs>
+  <text x="10" y="40" font-family="'Montserrat', sans-serif" font-weight="700" font-size="32" fill="#5DA3E9">Magatte<tspan fill="#4D5364">.dev</tspan></text>
+</svg>
