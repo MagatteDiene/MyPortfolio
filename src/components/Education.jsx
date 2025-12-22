@@ -13,7 +13,7 @@ const Education = () => {
       school: "École Supérieure Polytechnique (ESP), Dakar",
       degree: "Higher National Diploma (HND) in Computer Science",
       year: "2022 - 2024",
-      description: "Graduated with honors. Ranked First in class during the first year."
+      description: "Actively participated in various projects and academic activities."
     },
     {
       school: "Lycée Sergent Malamine Camara",
