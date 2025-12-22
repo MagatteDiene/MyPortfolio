@@ -29,10 +29,11 @@ const Projects = () => {
       description: "Academic project detecting botnet-related IoT network intrusions. Optimized Random Forest model achieving near-perfect accuracy. Developed web UI using Flask.",
       tags: ["Python (Flask)", "Machine Learning", "Random Forest"],
       link: "#",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" // Placeholder
+      image: "/nbaiotCapture.png" // Placeholder
     }
   ];
 
+  
   return (
     <section id="projects" className="py-20 bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
