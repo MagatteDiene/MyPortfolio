@@ -8,21 +8,21 @@ const Projects = () => {
       description: "Major front-end project: fully developed responsive landing page and user dashboards for project holders and investors. Enhanced UI/UX design and improved user interaction modules.",
       tags: ["HTML", "Tailwind CSS", "PHP (Laravel)"],
       link: "https://tamtamfinconnect.com",
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" // Placeholder
+      image: "/tamtamCapture.png" // Placeholder
     },
     {
       title: "SIRH (HR Information System)",
       description: "Developed multiple back-end and front-end modules. Integrated an AI module for CV pre-selection. Developed backend APIs using Laravel and configured Nginx server.",
       tags: ["Laravel", "AngularJS", "PostgreSQL", "AI Integration"],
       link: "#",
-      image: "https://images.unsplash.com/photo-1553877606-3c64810b1348?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" // Placeholder
+      image: "/sirhCapture.png" // Placeholder
     },
     {
       title: "GESTIMMO (Real Estate ERP)",
       description: "Developed modules for rent management and financial reporting. Implemented PDF generation for receipts. Developed data import jobs and planned system improvements.",
       tags: ["React", "Laravel", "OpenAI API", "PostgreSQL"],
       link: "#",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" // Placeholder
+      image: "/gestimmoCapture.png" // Placeholder
     },
     {
       title: "N-BaIoT – Network Intrusion Classification",

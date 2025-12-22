@@ -8,13 +8,13 @@ const Footer = () => {
           © {new Date().getFullYear()} Pape Magatte Ndiaye DIENE. All rights reserved.
         </p>
         <div className="flex gap-6">
-          <a href="#" className="text-gray-500 hover:text-white transition-colors">
+          <a href="https://github.com/MagatteDiene" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">
             <Github size={20} />
           </a>
-          <a href="#" className="text-gray-500 hover:text-white transition-colors">
+          <a href="https://www.linkedin.com/in/pape-magatte-ndiaye-diene-2990862b3/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">
             <Linkedin size={20} />
           </a>
-          <a href="mailto:papemagattendiayediene@gmail.com" className="text-gray-500 hover:text-white transition-colors">
+          <a href="mailto:papemagattendiayediene@gmail.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">
             <Mail size={20} />
           </a>
         </div>
