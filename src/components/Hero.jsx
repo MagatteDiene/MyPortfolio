@@ -93,6 +93,7 @@ const Hero = () => {
                  e.target.nextSibling.style.display = 'flex';
                }}
              />
+             
              <div className="hidden absolute inset-0 flex items-center justify-center bg-slate-800 text-slate-600 font-bold text-4xl">
                PM
              </div>
