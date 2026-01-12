@@ -2,13 +2,19 @@ import { motion } from 'framer-motion';
 
 const Skills = () => {
   const techSkills = [
-    { category: "Languages & Frameworks", items: ["PHP (Laravel)", "JavaScript (AngularJS, React)", "Java","Python", "C", "HTML", "CSS"] },
+    { category: "Languages & Frameworks", items: ["PHP (Laravel)", "JavaScript (React, AngularJS)", "Java", "Python", "C", "HTML/CSS","Tailwind CSS"] },
+    { category: "Tools & Methodologies", items: ["Git/GitHub/Gitlab", "Docker", "Postman", "UML Modeling"] },
     { category: "Databases", items: ["MySQL", "PostgreSQL"] },
-    { category: "Tools & Platforms", items: ["Git/GitHub/Gitlab", "Docker", "Postman", "UML Modeling", "System Administration"] },
-    { category: "Other", items: ["Machine Learning", "AI Integration", "Web Application Design", "Network administration"] },
+    { category: "Other", items: ["System Administration","Machine Learning", "AI Integration", "Network administration"] },
   ];
 
-  const softSkills = ["Problem Solving", "Teamwork & Collaboration", "Adaptability & Curiosity", "Time Management", "Communication"];
+  const coreValues = [
+    { title: "Problem Solving", desc: "Identifying and resolving complex issues efficiently." },
+    { title: "Adaptability & Curiosity", desc: "Quickly learning new technologies and methodologies." },
+    { title: "Teamwork & Collaboration", desc: "Collaborating with others to achieve common goals." },
+    { title: "Communication", desc: "Effective communication with team members and clients." },
+    { title: "Time Management", desc: "Managing my time efficiently to meet deadlines." },
+  ];
 
   const container = {
     hidden: { opacity: 0 },
@@ -26,88 +32,101 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 bg-slate-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-24 relative overflow-hidden">
+      <div className="max-container px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Skills & Expertise</h2>
-          <div className="w-20 h-1 bg-blue-500 mx-auto rounded-full"></div>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            Technical <span className="text-gradient">Mastery</span>
+          </h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">
+            A comprehensive overview of my technical expertise and the tools I use to bring ideas to life.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Technical Skills */}
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
-              <span className="w-2 h-8 bg-blue-500 rounded-full"></span>
-              Technical Skills
-            </h3>
-            <div className="space-y-6">
-              {techSkills.map((group, index) => (
-                <div key={index} className="bg-slate-900 p-6 rounded-xl border border-slate-800">
-                  <h4 className="text-lg font-semibold text-blue-400 mb-4">{group.category}</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {group.items.map((skill, idx) => (
-                      <span key={idx} className="px-3 py-1 bg-slate-800 text-gray-300 rounded-full text-sm border border-slate-700 hover:border-blue-500 transition-colors cursor-default">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Soft Skills & Languages */}
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
-               <span className="w-2 h-8 bg-purple-500 rounded-full"></span>
-               Soft Skills & Languages
-            </h3>
-            
-            <motion.div 
-              variants={container}
-              initial="hidden"
-              whileInView="show"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+          {techSkills.map((group, idx) => (
+            <motion.div
+              key={group.category}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8"
+              transition={{ delay: idx * 0.1 }}
+              className="glass-card p-8 rounded-[2.5rem] group hover:border-blue-500/30 transition-all duration-500"
             >
-              {softSkills.map((skill, index) => (
-                <motion.div key={index} variants={item} className="bg-slate-900 p-4 rounded-xl border border-slate-800 flex items-center gap-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                  <span className="text-gray-300 font-medium">{skill}</span>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
-              <h4 className="text-lg font-semibold text-purple-400 mb-4">Languages</h4>
-              <div className="space-y-4">
-                <div>
-                  <div className="flex justify-between mb-1">
-                    <span className="text-gray-300">French</span>
-                    <span className="text-gray-400 text-sm">Native</span>
-                  </div>
-                  <div className="w-full bg-slate-800 rounded-full h-2">
-                    <div className="bg-purple-500 h-2 rounded-full" style={{ width: '100%' }}></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between mb-1">
-                    <span className="text-gray-300">English</span>
-                    <span className="text-gray-400 text-sm">Professional Working Proficiency</span>
-                  </div>
-                  <div className="w-full bg-slate-800 rounded-full h-2">
-                    <div className="bg-purple-500 h-2 rounded-full" style={{ width: '65%' }}></div>
-                  </div>
-                </div>
+              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                <span className="w-2 h-8 bg-blue-500 rounded-full" />
+                {group.category}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {group.items.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-4 py-2 rounded-xl bg-slate-950/50 border border-white/5 text-slate-400 text-sm font-medium group-hover:text-blue-400 group-hover:border-blue-500/20 transition-all duration-300"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Languages & Core Values */}
+        <div className="grid md:grid-cols-2 gap-8">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="glass-card p-10 rounded-[2.5rem]"
+          >
+            <h3 className="text-2xl font-bold text-white mb-8">Languages</h3>
+            <div className="space-y-6">
+              {[
+                { name: "French", level: "Native", progress: 100 },
+                { name: "English", level: "Professional working proficiency", progress: 65 },
+              ].map((lang) => (                <div key={lang.name} className="space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-white font-semibold">{lang.name}</span>
+                    <span className="text-slate-500">{lang.level}</span>
+                  </div>
+                  <div className="h-2 w-full bg-slate-900 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${lang.progress}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: 0.5 }}
+                      className="h-full bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="glass-card p-10 rounded-[2.5rem]"
+          >
+            <h3 className="text-2xl font-bold text-white mb-8">Soft Skills</h3>
+            <div className="space-y-4">
+              {coreValues.map((value) => (
+                <div key={value.title} className="p-4 rounded-2xl bg-slate-950/50 border border-white/5 group hover:border-blue-500/30 transition-all">
+                  <h4 className="text-white font-bold mb-1 flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                    {value.title}
+                  </h4>
+                  <p className="text-slate-400 text-sm group-hover:text-slate-300 transition-colors">{value.desc}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

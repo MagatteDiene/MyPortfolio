@@ -24,45 +24,51 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-900/90 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'glass-navbar py-2 shadow-2xl' : 'bg-transparent py-4'}`}>
+      <div className="max-container px-4">
+        <div className="flex items-center justify-between h-16 glass-card !bg-slate-900/20 backdrop-blur-lg rounded-2xl px-6 border-white/5">
           <div className="flex-shrink-0 flex items-center">
             <motion.a 
               href="#home" 
-              className="text-2xl font-bold text-blue-500 flex items-center gap-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               <img 
                 src="/logo.svg" 
                 alt="Magatte.dev" 
-                className="h-12 w-auto object-contain"
+                className="h-10 w-auto object-contain brightness-110"
               />
             </motion.a>
           </div>
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="flex items-center space-x-1">
               {navLinks.map((link) => (
                 <motion.a
                   key={link.name}
                   href={link.href}
-                  className="text-gray-300 hover:text-blue-400 hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium transition-colors relative"
-                  whileHover={{ scale: 1.05, color: '#60a5fa' }}
-                  whileTap={{ scale: 0.95 }}
+                  className="text-slate-400 hover:text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 relative group"
+                  whileHover={{ y: -2 }}
+                  whileTap={{ y: 0 }}
                 >
-                  {link.name}
+                  <span className="relative z-10">{link.name}</span>
+                  <motion.div 
+                    className="absolute inset-0 bg-blue-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"
+                    layoutId="nav-hover"
+                  />
+                  <div className="absolute bottom-1 left-4 right-4 h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
                 </motion.a>
               ))}
             </div>
           </div>
-          <div className="-mr-2 flex md:hidden">
-            <button
+          <div className="flex md:hidden">
+            <motion.button
+              whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-slate-700 focus:outline-none"
+              className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
@@ -70,21 +76,22 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-slate-900 overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden absolute top-full left-0 w-full p-4 z-40"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="glass-card rounded-[2rem] p-4 space-y-2">
               {navLinks.map((link) => (
-                <a
+                <motion.a
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-gray-300 hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium"
+                  className="text-slate-400 hover:text-white block px-6 py-4 rounded-2xl text-lg font-medium hover:bg-white/5 transition-all"
+                  whileHover={{ x: 10 }}
                 >
                   {link.name}
-                </a>
+                </motion.a>
               ))}
             </div>
           </motion.div>

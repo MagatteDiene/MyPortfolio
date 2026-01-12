@@ -24,66 +24,54 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-24 relative overflow-hidden">
+      <div className="max-container px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Get In Touch</h2>
-          <div className="w-20 h-1 bg-blue-500 mx-auto rounded-full"></div>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            Get In <span className="text-gradient">Touch</span>
+          </h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">
+            Ready to collaborate on your next digital innovation? Let's connect and build something amazing together.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <h3 className="text-2xl font-bold text-white mb-6">Let's Talk About Your Project</h3>
-            <p className="text-gray-400 mb-8">
-              I'm always interested in hearing about new projects and opportunities.
-              Whether you have a question or just want to say hi, feel free to drop me a message.
-            </p>
-
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="bg-slate-800 p-3 rounded-lg text-blue-500">
-                  <Phone size={24} />
-                </div>
-                <div>
-                  <h4 className="text-white font-medium mb-1">Phone</h4>
-                  <p className="text-gray-400 hover:text-blue-400 transition-colors">
-                    <a href="tel:+221776163977">+221 77 616 39 77</a>
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="bg-slate-800 p-3 rounded-lg text-blue-500">
-                  <Mail size={24} />
-                </div>
-                <div>
-                  <h4 className="text-white font-medium mb-1">Email</h4>
-                  <p className="text-gray-400 hover:text-blue-400 transition-colors">
-                    <a href="mailto:papemagattendiayediene@gmail.com">papemagattendiayediene@gmail.com</a>
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="bg-slate-800 p-3 rounded-lg text-blue-500">
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <h4 className="text-white font-medium mb-1">Location</h4>
-                  <p className="text-gray-400">HLM Grand Yoff, Dakar</p>
-                </div>
+            <div className="glass-card p-8 rounded-[2.5rem] space-y-8">
+              <h3 className="text-2xl font-bold text-white mb-2">Contact Information</h3>
+              
+              <div className="space-y-6">
+                {[
+                  { icon: Phone, label: "Phone", value: "+221 77 616 39 77", href: "tel:+221776163977", color: "blue" },
+                  { icon: Mail, label: "Email", value: "papemagattendiayediene@gmail.com", href: "mailto:papemagattendiayediene@gmail.com", color: "indigo" },
+                  { icon: MapPin, label: "Location", value: "HLM Grand Yoff, Dakar", href: null, color: "purple" }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-center gap-6 group">
+                    <div className={`w-12 h-12 rounded-2xl bg-${item.color}-500/10 flex items-center justify-center text-${item.color}-500 group-hover:scale-110 transition-transform`}>
+                      <item.icon size={24} />
+                    </div>
+                    <div>
+                      <h4 className="text-slate-500 text-xs font-bold uppercase tracking-widest mb-1">{item.label}</h4>
+                      {item.href ? (
+                        <a href={item.href} className="text-white font-medium hover:text-blue-400 transition-colors">
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="text-white font-medium">{item.value}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>
@@ -91,54 +79,55 @@ const Contact = () => {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
-            className="bg-slate-800 p-8 rounded-2xl border border-slate-700"
+            className="glass-card p-10 rounded-[2.5rem]"
           >
             <form className="space-y-6" onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">Name</label>
+              <div className="space-y-2">
+                <label htmlFor="name" className="text-sm font-bold text-slate-500 uppercase tracking-widest ml-1">Full Name</label>
                 <input
                   type="text"
                   id="name"
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
-                  placeholder="Your Name"
+                  placeholder="John Doe"
+                  className="w-full bg-slate-950/50 border border-white/5 rounded-2xl px-6 py-4 text-white placeholder:text-slate-600 focus:outline-none focus:border-blue-500/50 transition-colors"
                 />
               </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">Email</label>
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-bold text-slate-500 uppercase tracking-widest ml-1">Email Address</label>
                 <input
                   type="email"
                   id="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
-                  placeholder="your@email.com"
+                  placeholder="john@example.com"
+                  className="w-full bg-slate-950/50 border border-white/5 rounded-2xl px-6 py-4 text-white placeholder:text-slate-600 focus:outline-none focus:border-blue-500/50 transition-colors"
                 />
               </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">Message</label>
+              <div className="space-y-2">
+                <label htmlFor="message" className="text-sm font-bold text-slate-500 uppercase tracking-widest ml-1">Message</label>
                 <textarea
                   id="message"
                   rows="4"
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors resize-none"
-                  placeholder="Your message..."
+                  placeholder="Tell me about your project..."
+                  className="w-full bg-slate-950/50 border border-white/5 rounded-2xl px-6 py-4 text-white placeholder:text-slate-600 focus:outline-none focus:border-blue-500/50 transition-colors resize-none"
                 ></textarea>
               </div>
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
+                className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-2xl transition-all flex items-center justify-center gap-3 shadow-lg shadow-blue-500/25 group"
               >
                 Send Message
-                <Send size={18} />
-              </button>
+                <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </motion.button>
             </form>
           </motion.div>
         </div>

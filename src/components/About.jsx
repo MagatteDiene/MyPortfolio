@@ -1,67 +1,85 @@
 import { motion } from 'framer-motion';
+import { Award, Code, GraduationCap, Users } from 'lucide-react';
 
 const About = () => {
+  const stats = [
+    { label: "Years of Experience", value: "02", icon: GraduationCap },
+    { label: "Projects", value: "5+", icon: GraduationCap },
+    { label: "Class Rank (During the first year of the engineering cycle)", value: "01st", icon: Award },
+    { label: "Focus", value: "Web", icon: Code }
+  ];
+
   return (
-    <section id="about" className="py-20 bg-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">About Me</h2>
-          <div className="w-20 h-1 bg-blue-500 mx-auto rounded-full"></div>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section id="about" className="py-24 relative overflow-hidden">
+      <div className="max-container px-4">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="space-y-6 text-gray-300 leading-relaxed"
+            transition={{ duration: 0.8 }}
+            className="relative"
           >
-            <p>
-              I am a final-year Engineering Technology Student in Computer Science at École Supérieure Polytechnique (ESP), Dakar. 
-              My journey has been defined by a deep passion for software development and a keen interest in Artificial Intelligence.
-            </p>
-            <p>
-              With a strong foundation in both theoretical concepts and practical application, I have consistently demonstrated 
-              academic excellence, ranking first in my class during the first year of my program.
-            </p>
-            <p>
-              I possess strong analytical and problem-solving skills, combining academic rigor with hands-on experience in 
-              project management and full-stack application development. I am highly motivated to tackle technical challenges 
-              and contribute effectively to project success.
-            </p>
+            <div className="aspect-square glass-card rounded-[3rem] p-4 relative z-10 group">
+              <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-slate-900 relative">
+                <img 
+                  src="/study_hard.jpg" 
+                  alt="Work Space" 
+                  className="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+              </div>
+            </div>
+            {/* Decorative elements */}
+            <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-700" />
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-2 gap-4"
-          >
-            <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
-              <h3 className="text-4xl font-bold text-blue-500 mb-2">02</h3>
-              <p className="text-sm text-gray-400">Years of Experience</p>
+          <div className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                Passionate about <br />
+                <span className="text-gradient">Problem Solving</span>
+              </h2>
+              <div className="space-y-6 text-slate-400 leading-relaxed text-lg">
+                <p>
+                  I am a final-year Engineering Technology Student in Computer Science at ESP Dakar. 
+                  My journey is defined by a passion for software development and Artificial Intelligence.
+                </p>
+                <p>
+                  My first engineering cycle year was marked by consistent academic performance, resulting in a first-place ranking.
+                </p>
+                <p>
+                  I blend academic rigor with practical experience in full-stack development, 
+                  always aiming for elegant and efficient solutions to complex problems.
+                </p>
+              </div>
+            </motion.div>
+
+            <div className="grid grid-cols-2 gap-6">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  className="glass-card p-6 rounded-[2rem] group hover:border-blue-500/50 transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 text-blue-500 group-hover:scale-110 transition-transform">
+                    <stat.icon size={24} />
+                  </div>
+                  <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
+                  <div className="text-xs text-slate-500 uppercase tracking-widest font-bold">{stat.label}</div>
+                </motion.div>
+              ))}
             </div>
-            <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
-              <h3 className="text-4xl font-bold text-blue-500 mb-2">05+</h3>
-              <p className="text-sm text-gray-400">Projects Completed</p>
-            </div>
-            <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
-              <h3 className="text-4xl font-bold text-blue-500 mb-2">01st</h3>
-              <p className="text-sm text-gray-400">Class Rank (During the first year of the engineering cycle)</p>
-            </div>
-             <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
-              <h3 className="text-4xl font-bold text-blue-500 mb-2">24/7</h3>
-              <p className="text-sm text-gray-400">Dedication</p>
-            </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
