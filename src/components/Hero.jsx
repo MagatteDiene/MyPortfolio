@@ -84,7 +84,7 @@ const Hero = () => {
           <div className="w-64 h-64 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-blue-600 to-purple-600 blur-2xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-30 animate-pulse"></div>
           <div className="w-64 h-64 md:w-96 md:h-96 rounded-full border-4 border-slate-800 bg-slate-900 flex items-center justify-center relative z-10 overflow-hidden mx-auto shadow-2xl">
              <img 
-               src="/profile.jpg" 
+               src="/profile.png" 
                alt="Pape Magatte Ndiaye DIENE" 
                className="w-full h-full object-cover"
                onError={(e) => {

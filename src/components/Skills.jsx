@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 
 const Skills = () => {
   const techSkills = [
-    { category: "Languages & Frameworks", items: ["PHP (Laravel)", "JavaScript (AngularJS, React)", "Java", "HTML", "CSS"] },
+    { category: "Languages & Frameworks", items: ["PHP (Laravel)", "JavaScript (AngularJS, React)", "Java","Python", "C", "HTML", "CSS"] },
     { category: "Databases", items: ["MySQL", "PostgreSQL"] },
-    { category: "Tools & Platforms", items: ["Git/GitHub", "Postman", "UML Modeling", "System Administration"] },
-    { category: "Other", items: ["Machine Learning", "AI Integration", "Web Application Design"] },
+    { category: "Tools & Platforms", items: ["Git/GitHub/Gitlab", "Docker", "Postman", "UML Modeling", "System Administration"] },
+    { category: "Other", items: ["Machine Learning", "AI Integration", "Web Application Design", "Network administration"] },
   ];
 
   const softSkills = ["Problem Solving", "Teamwork & Collaboration", "Adaptability & Curiosity", "Time Management", "Communication"];
