@@ -83,7 +83,14 @@ const Certifications = () => {
   const [selectedCert, setSelectedCert] = useState(null);
 
   const certifications = [
-  
+    {
+      title: "Introduction to Generative AI for Software Development",
+      issuer: "DeepLearning.AI (Coursera)",
+      date: "2025",
+      image: "/certification_deeplearning_ai.png",
+      pdf: "/Certification_Introduction_to_generativeAI_for_software_Development.pdf",
+      description: "Focused on integrating Generative AI into the software development lifecycle. Gained hands-on experience using LLMs to improve code quality, accelerate prototyping, and enhance productivity from design to deployment."
+    },
     {
       title: "Networking Basics",
       issuer: "Cisco Networking Academy",
@@ -99,14 +106,6 @@ const Certifications = () => {
       image: "/networking-devices-and-initial-configuration.png",
       pdf: "/NetworkingDevicesandBasic.pdf",
       description: "Hands-on skills for configuring networking devices and establishing basic connectivity."
-    },
-      {
-      title: "Introduction to Generative AI for Software Development",
-      issuer: "DeepLearning.AI (Coursera)",
-      date: "2025",
-      image: "/certification_deeplearning_ai.png",
-      pdf: "/Certification_Introduction_to_generativeAI_for_software_Development.pdf",
-      description: "Focused on integrating Generative AI into the software development lifecycle. Gained hands-on experience using LLMs to improve code quality, accelerate prototyping, and enhance productivity from design to deployment."
     }
   ];
 
