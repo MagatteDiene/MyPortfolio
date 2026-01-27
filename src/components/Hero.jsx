@@ -3,13 +3,13 @@ import { ArrowRight, Download } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-16 relative">
-      <div className="max-container px-4 flex flex-col-reverse md:flex-row items-center gap-12 relative z-10">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-32 md:pt-16 relative">
+      <div className="max-container px-4 flex flex-col md:flex-row items-center gap-12 relative z-10">
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex-1 text-center md:text-left"
+          className="flex-1 text-center md:text-left order-2 md:order-1"
         >
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -86,7 +86,7 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 1, delay: 0.2, type: "spring" }}
-          className="flex-1 relative"
+          className="flex-1 relative order-1 md:order-2"
         >
           {/* Animated rings */}
           <div className="absolute inset-0 flex items-center justify-center">
@@ -102,8 +102,8 @@ const Hero = () => {
             />
           </div>
 
-          <div className="relative z-10 p-4">
-            <div className="w-64 h-64 md:w-[400px] md:h-[400px] rounded-[3rem] glass-card p-4 relative overflow-hidden group">
+          <div className="relative z-10 p-4 flex justify-center">
+            <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-[400px] md:h-[400px] rounded-[3rem] glass-card p-4 relative overflow-hidden group">
               <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-slate-900 relative">
                 <img 
                   src="/profile.png" 
