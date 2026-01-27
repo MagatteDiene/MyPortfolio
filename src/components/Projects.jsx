@@ -1,8 +1,20 @@
-import { motion } from 'framer-motion';
-import { ExternalLink, Github, Code } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Github, Code, Maximize2 } from 'lucide-react';
+import ProjectModal from './ProjectModal';
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+
   const projects = [
+    {
+      title: "SALAMA – Public Procurement & Supply Chain",
+      description: "Large-scale application for digitized procurement and logistics tracking. Features include e-Procurement (AO, submission, evaluation), logistics (fleet management, shipment tracking), and automated reporting.",
+      fullDescription: "SALAMA is a comprehensive system designed for digitized public procurement management and supply chain tracking. \n\n Key highlights: \n - Architecture: Robust Laravel 8 backend with a hybrid API (REST & GraphQL) handling 100+ database tables. \n - e-Procurement: Full digitization of purchasing processes from needs expression to contract award. \n - Logistics: Real-time shipment tracking, fleet management (vehicles, drivers), and geographical delivery planning. \n - UI/UX: Dynamic interfaces built with Blade and AngularJS, featuring decision-making dashboards and automated PDF/Excel generation. \n - Communication: Automated workflow notifications and granular permission management via Spatie.",
+      tags: ["Laravel", "AngularJS", "GraphQL", "PostgreSQL"],
+      link: "#",
+      image: "/backsalama-project.png"
+    },
     {
       title: "TamTam FinConnect",
       description: "Major front-end project: fully developed responsive landing page and user dashboards for project holders and investors. Enhanced UI/UX design and improved user interaction modules.",
@@ -60,7 +72,8 @@ const Projects = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -10 }}
-              className="glass-card rounded-[2.5rem] overflow-hidden group flex flex-col h-full"
+              onClick={() => setSelectedProject(project)}
+              className="glass-card rounded-[2.5rem] overflow-hidden group flex flex-col h-full cursor-pointer"
             >
               <div className="relative aspect-video overflow-hidden">
                 <img 
@@ -69,6 +82,14 @@ const Projects = () => {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60" />
+                
+                {/* View Project Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-blue-600/10 backdrop-blur-[2px]">
+                  <div className="bg-white/10 backdrop-blur-md p-4 rounded-full border border-white/20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <Maximize2 className="text-white" size={24} />
+                  </div>
+                </div>
+
                 <div className="absolute bottom-4 left-6 right-6 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="flex gap-3">
                     {project.title === "TamTam FinConnect" && project.link !== "#" && (
@@ -76,6 +97,7 @@ const Projects = () => {
                         href={project.link} 
                         target="_blank" 
                         rel="noopener noreferrer" 
+                        onClick={(e) => e.stopPropagation()}
                         className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all"
                       >
                         <ExternalLink size={20} />
@@ -106,6 +128,12 @@ const Projects = () => {
             </motion.div>
           ))}
         </div>
+
+        <ProjectModal 
+          isOpen={!!selectedProject} 
+          onClose={() => setSelectedProject(null)} 
+          project={selectedProject} 
+        />
       </div>
     </section>
   );
