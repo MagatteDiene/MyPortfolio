@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const Skills = () => {
   const techSkills = [
     { category: "Languages & Frameworks", items: ["PHP (Laravel)", "JavaScript (React, AngularJS)", "Java", "Python", "C", "HTML/CSS","Tailwind CSS"] },
-    { category: "Tools & Methodologies", items: ["Git/GitHub/Gitlab", "Docker", "Postman", "UML Modeling"] },
+    { category: "Tools & Methodologies", items: ["Git/GitHub/Gitlab", "Docker", "Postman", "UML Modeling", "GRAPHQL"] },
     { category: "Databases", items: ["MySQL", "PostgreSQL"] },
     { category: "Other", items: ["System Administration","Machine Learning", "AI Integration", "Network administration"] },
   ];
