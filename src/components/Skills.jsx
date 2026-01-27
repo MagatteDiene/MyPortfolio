@@ -3,17 +3,16 @@ import { motion } from 'framer-motion';
 const Skills = () => {
   const techSkills = [
     { category: "Languages & Frameworks", items: ["PHP (Laravel)", "JavaScript (React, AngularJS)", "Java", "Python", "C", "HTML/CSS","Tailwind CSS"] },
-    { category: "Tools & Methodologies", items: ["Git/GitHub/Gitlab", "Docker", "Postman", "UML Modeling", "GRAPHQL"] },
+    { category: "Tools & Methodologies", items: ["Git/GitHub/Gitlab", "Docker", "Postman", "UML Modeling", "GraphQL (Rebing)", "Responsive UI/UX", "Notions"] },
     { category: "Databases", items: ["MySQL", "PostgreSQL"] },
-    { category: "Other", items: ["System Administration","Machine Learning", "AI Integration", "Network administration"] },
+    { category: "Other", items: ["Network administration", "System Administration","Machine Learning", "AI Integration"] },
   ];
 
   const coreValues = [
-    { title: "Problem Solving", desc: "Identifying and resolving complex issues efficiently." },
-    { title: "Adaptability & Curiosity", desc: "Quickly learning new technologies and methodologies." },
-    { title: "Teamwork & Collaboration", desc: "Collaborating with others to achieve common goals." },
+    { title: "Problem Solving", desc: "Designing robust solutions for complex business workflows and high-volume data." },
+    { title: "Adaptability", desc: "Swiftly mastering new technologies like GraphQL, Machine Learning, and AI." },
     { title: "Communication", desc: "Effective communication with team members and clients." },
-    { title: "Time Management", desc: "Managing my time efficiently to meet deadlines." },
+    { title: "Collaboration", desc: "Effective communication and teamwork in agile environments." },
   ];
 
   const container = {
