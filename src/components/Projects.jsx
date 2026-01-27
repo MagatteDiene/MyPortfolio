@@ -31,10 +31,11 @@ const Projects = () => {
     },
     {
       title: "GESTIMMO (Real Estate ERP)",
-      description: "Developed modules for rent management and financial reporting. Implemented PDF generation for receipts. Developed data import jobs and planned system improvements.",
-      tags: ["AngularJS", "Laravel", "PostgreSQL"],
+      description: "Complete rental and financial management software for real estate groups (SCI/SERTEM). Automates contract lifecycles, billing tracking, and payment collection processes.",
+      fullDescription: "GESTIMMO is a comprehensive software solution designed for rental and financial management in the real estate sector (SCI/SERTEM). \n\n Key Achievements: \n - Hybrid API Architecture: Robust Laravel 8 backend with a flexible GraphQL API for optimized data retrieval. \n - Advanced Rental Management: Contract (lease) engine with management of amendments, payment frequencies, and automated due notices. \n - Financial Engineering: Multi-flow collection system (rent, charges, deposits, water) with automatic payment allocation and unique global billing numbering. \n - Automation & Reporting: Integrated PDF engine (Rent receipts, Contracts, Inventories) and Excel export tools for accounting. \n - Security & Roles: JWT authentication and granular access rights management via Spatie Laravel Permission. \n - Reactive Interface: Dynamic frontend combining Blade and AngularJS for smooth management dashboards. \n\n Technical Environment: \n - Backend: Laravel 8, PHP 7.4/8.0, GraphQL, Eloquent ORM. \n - Frontend: AngularJS, Blade, Tailwind CSS / Bootstrap. \n - Database: MySQL / PostgreSQL (Complex transactions). \n - Tools: DomPDF, Maatwebsite Excel, Git, Postman.",
+      tags: ["AngularJS", "Laravel", "GraphQL", "PostgreSQL"],
       link: "#",
-      image: "/gestimmoCapture.png" // Placeholder
+      image: "/gestimmoCapture.png"
     },
     {
       title: "N-BaIoT – Network Intrusion Classification",
