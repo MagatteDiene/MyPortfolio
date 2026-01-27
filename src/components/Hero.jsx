@@ -2,52 +2,70 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 
 const Hero = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        mass: 1
+      }
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-32 md:pt-16 relative">
-      <div className="max-container px-4 flex flex-col md:flex-row items-center gap-12 relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex-1 text-center md:text-left order-2 md:order-1"
-        >
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        className="max-container px-4 flex flex-col md:flex-row items-center gap-12 relative z-10"
+      >
+        <div className="flex-1 text-center md:text-left order-2 md:order-1">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.4 }}
+            variants={itemVariants}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
             </span>
-           
+            <span className="will-change-transform">
+              </span>
           </motion.div>
 
           <motion.h1 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
+            variants={itemVariants}
+            className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight will-change-transform"
           >
             Pape Magatte <br />
             <span className="text-gradient">Ndiaye DIENE</span>
           </motion.h1>
 
           <motion.h3 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="text-2xl md:text-3xl text-slate-300 font-medium mb-8"
+            variants={itemVariants}
+            className="text-2xl md:text-3xl text-slate-300 font-medium mb-8 will-change-transform"
           >
             Software Developer
           </motion.h3>
 
           <motion.p 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto md:mx-0 leading-relaxed"
+            variants={itemVariants}
+            className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto md:mx-0 leading-relaxed will-change-transform"
           >
             Final-year Engineering Technology Student in Computer Science.
             Passionate about software development and innovative technologies, with a particular interest in Artificial Intelligence.
@@ -55,16 +73,14 @@ const Hero = () => {
           </motion.p>
           
           <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
+            variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
           >
             <motion.a 
               href="#projects" 
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-semibold transition-all flex items-center justify-center gap-2 shadow-[0_20px_50px_rgba(59,130,246,0.3)] group"
+              className="px-10 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-semibold transition-all flex items-center justify-center gap-2 shadow-[0_20px_50px_rgba(59,130,246,0.3)] group will-change-transform"
             >
               View My Work
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -74,19 +90,24 @@ const Hero = () => {
               download
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 glass-card hover:bg-white/5 text-white rounded-2xl font-semibold transition-all flex items-center justify-center gap-2"
+              className="px-10 py-4 glass-card hover:bg-white/5 text-white rounded-2xl font-semibold transition-all flex items-center justify-center gap-2 will-change-transform"
             >
               Download CV
               <Download size={20} />
             </motion.a>
           </motion.div>
-        </motion.div>
+        </div>
         
         <motion.div 
           initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 1, delay: 0.2, type: "spring" }}
-          className="flex-1 relative order-1 md:order-2"
+          transition={{ 
+            type: "spring",
+            stiffness: 60,
+            damping: 15,
+            delay: 0.2
+          }}
+          className="flex-1 relative order-1 md:order-2 will-change-transform"
         >
           {/* Animated rings */}
           <div className="absolute inset-0 flex items-center justify-center">
@@ -146,7 +167,7 @@ const Hero = () => {
             </motion.div>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };

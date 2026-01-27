@@ -25,9 +25,13 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'glass-navbar py-2 shadow-2xl' : 'bg-transparent py-4'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'}`}>
       <div className="max-container px-4">
-        <div className="flex items-center justify-between h-16 glass-card !bg-slate-900/20 backdrop-blur-lg rounded-2xl px-6 border-white/5">
+        <div className={`flex items-center justify-between h-16 rounded-2xl px-6 border transition-all duration-300 ${
+          scrolled 
+            ? 'bg-slate-900/80 backdrop-blur-lg border-white/10 shadow-xl' 
+            : 'bg-slate-900/20 backdrop-blur-md border-white/5 shadow-none'
+        }`}>
           <div className="flex-shrink-0 flex items-center">
             <motion.a 
               href="#home" 

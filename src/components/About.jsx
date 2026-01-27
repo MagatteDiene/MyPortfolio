@@ -14,11 +14,16 @@ const About = () => {
       <div className="max-container px-4">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: -50, scale: 0.95 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="relative"
+            transition={{ 
+              type: "spring",
+              stiffness: 50,
+              damping: 15,
+              mass: 1
+            }}
+            className="relative will-change-transform"
           >
             <div className="aspect-square glass-card rounded-[3rem] p-4 relative z-10 group">
               <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-slate-900 relative">
@@ -37,10 +42,16 @@ const About = () => {
 
           <div className="space-y-8">
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              transition={{ 
+                type: "spring",
+                stiffness: 50,
+                damping: 15,
+                mass: 1
+              }}
+              className="will-change-transform"
             >
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
                 Passionate about <br />
@@ -70,7 +81,10 @@ const About = () => {
                 hidden: { opacity: 0 },
                 show: {
                   opacity: 1,
-                  transition: { staggerChildren: 0.05 }
+                  transition: { 
+                    staggerChildren: 0.1,
+                    delayChildren: 0.2
+                  }
                 }
               }}
             >
@@ -78,15 +92,24 @@ const About = () => {
                 <motion.div
                   key={index}
                   variants={{
-                    hidden: { opacity: 0, y: 15 },
+                    hidden: { opacity: 0, scale: 0.8, y: 20 },
                     show: { 
                       opacity: 1, 
+                      scale: 1,
                       y: 0,
-                      transition: { duration: 0.4, ease: "easeOut" }
+                      transition: { 
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 15
+                      }
                     }
                   }}
-                  whileHover={{ y: -5 }}
-                  className="glass-card p-6 rounded-[2rem] group hover:border-blue-500/50 transition-all duration-300"
+                  whileHover={{ 
+                    y: -8,
+                    scale: 1.05,
+                    transition: { type: "spring", stiffness: 400, damping: 10 }
+                  }}
+                  className="glass-card p-6 rounded-[2rem] group hover:border-blue-500/50 transition-all duration-300 will-change-transform"
                 >
                   <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 text-blue-500 group-hover:scale-110 transition-transform">
                     <stat.icon size={24} />

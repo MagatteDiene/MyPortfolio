@@ -68,13 +68,14 @@ const Projects = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={{
             hidden: { opacity: 0 },
             show: {
               opacity: 1,
               transition: {
-                staggerChildren: 0.1
+                staggerChildren: 0.1,
+                delayChildren: 0.2
               }
             }
           }}
@@ -83,19 +84,27 @@ const Projects = () => {
             <motion.div
               key={index}
               variants={{
-                hidden: { opacity: 0, y: 20 },
+                hidden: { opacity: 0, y: 30, scale: 0.95 },
                 show: { 
                   opacity: 1, 
                   y: 0,
+                  scale: 1,
                   transition: {
-                    duration: 0.5,
-                    ease: "easeOut"
+                    type: "spring",
+                    stiffness: 80,
+                    damping: 15,
+                    mass: 1
                   }
                 }
               }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              whileHover={{ 
+                y: -12, 
+                scale: 1.02,
+                transition: { type: "spring", stiffness: 400, damping: 10 } 
+              }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => setSelectedProject(project)}
-              className="glass-card rounded-[2.5rem] overflow-hidden group flex flex-col h-full cursor-pointer"
+              className="glass-card rounded-[2.5rem] overflow-hidden group flex flex-col h-full cursor-pointer will-change-transform"
             >
               <div className="relative aspect-video overflow-hidden">
                 <img 

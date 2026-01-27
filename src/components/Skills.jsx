@@ -20,19 +20,22 @@ const Skills = () => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05
+        staggerChildren: 0.1,
+        delayChildren: 0.1
       }
     }
   };
 
   const item = {
-    hidden: { opacity: 0, y: 15 },
+    hidden: { opacity: 0, scale: 0.9, y: 20 },
     show: { 
       opacity: 1, 
+      scale: 1,
       y: 0,
       transition: {
-        duration: 0.4,
-        ease: "easeOut"
+        type: "spring",
+        stiffness: 100,
+        damping: 15
       }
     }
   };
@@ -66,7 +69,7 @@ const Skills = () => {
             <motion.div
               key={group.category}
               variants={item}
-              className="glass-card p-8 rounded-[2.5rem] group hover:border-blue-500/30 transition-all duration-500"
+              className="glass-card p-8 rounded-[2.5rem] group hover:border-blue-500/30 transition-all duration-500 will-change-transform"
             >
               <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="w-2 h-8 bg-blue-500 rounded-full" />

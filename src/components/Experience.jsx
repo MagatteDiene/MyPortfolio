@@ -53,7 +53,8 @@ const Experience = () => {
             show: {
               opacity: 1,
               transition: {
-                staggerChildren: 0.1
+                staggerChildren: 0.15,
+                delayChildren: 0.2
               }
             }
           }}
@@ -62,17 +63,24 @@ const Experience = () => {
             <motion.div
               key={index}
               variants={{
-                hidden: { opacity: 0, x: index % 2 === 0 ? -20 : 20 },
+                hidden: { 
+                  opacity: 0, 
+                  x: index % 2 === 0 ? -50 : 50,
+                  scale: 0.95
+                },
                 show: { 
                   opacity: 1, 
                   x: 0,
+                  scale: 1,
                   transition: {
-                    duration: 0.5,
-                    ease: "easeOut"
+                    type: "spring",
+                    stiffness: 60,
+                    damping: 15,
+                    mass: 1
                   }
                 }
               }}
-              className="glass-card p-8 md:p-12 rounded-[3rem] group hover:border-blue-500/30 transition-all duration-500"
+              className="glass-card p-8 md:p-12 rounded-[3rem] group hover:border-blue-500/30 transition-all duration-500 will-change-transform"
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
                 <div className="flex items-center gap-6">

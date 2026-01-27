@@ -30,7 +30,7 @@
   }
   
   .glass-navbar {
-    @apply bg-slate-950/60 backdrop-blur-md border-b border-white/5;
+    @apply bg-transparent;
   }
 
   .text-gradient {
