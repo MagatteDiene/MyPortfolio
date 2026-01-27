@@ -114,7 +114,7 @@ const Certifications = () => {
             Certifications
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            Professional recognitions and technical validations of my expertise.
+             Technical skills and certifications achieved through my studies and projects.
           </p>
         </motion.div>
 

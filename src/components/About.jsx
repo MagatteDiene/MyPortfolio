@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import { Award, Code, GraduationCap, Users } from 'lucide-react';
+import { Award, Code, GraduationCap, Briefcase } from 'lucide-react';
 
 const About = () => {
   const stats = [
+    { label: "Skills", value: "Software Engineering", icon: Code },
     { label: "Years of Experience", value: "02", icon: GraduationCap },
-    { label: "Projects", value: "5+", icon: GraduationCap },
     { label: "Class Rank (During the first year of the engineering cycle)", value: "01st", icon: Award },
-    { label: "Focus", value: "Web", icon: Code }
+    { label: "Projects", value: "5+", icon: Briefcase }
   ];
 
   return (

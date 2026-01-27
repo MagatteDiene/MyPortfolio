@@ -54,7 +54,7 @@ const Skills = () => {
             Technical <span className="text-gradient">Mastery</span>
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise and the tools I use to bring ideas to life.
+            A comprehensive overview of my technical skills and the tools I use in software development.
           </p>
         </motion.div>
 
