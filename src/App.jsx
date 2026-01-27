@@ -9,13 +9,14 @@ import Projects from './components/Projects';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ParticlesBackground from './components/ParticlesBackground';
 
 function App() {
   return (
     <div className="bg-slate-950 min-h-screen text-slate-100 font-sans selection:bg-blue-500/30 selection:text-blue-200 relative overflow-hidden">
       {/* Premium Background Effects */}
       <div className="noise-bg" />
-      
+      <ParticlesBackground />
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div 
           animate={{
