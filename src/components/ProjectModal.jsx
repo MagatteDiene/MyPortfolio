@@ -34,7 +34,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-6xl max-h-[90vh] md:max-h-[85vh] bg-slate-900 border border-white/10 rounded-[1.5rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col"
+            className="relative w-full max-w-6xl max-h-[90vh] md:max-h-[85vh] bg-slate-900 border border-white/5 rounded-[1.5rem] md:rounded-[2.5rem] shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col"
           >
             {/* Close Button */}
             <button
@@ -107,7 +107,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
 
                   {/* Key Features */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="p-5 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-4 hover:bg-white/10 transition-colors group/feat">
+                    <div className="p-5 rounded-2xl bg-slate-950/40 border border-white/5 flex items-start gap-4 hover:bg-white/5 transition-colors group/feat">
                       <div className="p-2 bg-blue-500/10 rounded-xl group-hover/feat:bg-blue-500/20 transition-colors">
                         <CheckCircle2 className="text-blue-400" size={20} />
                       </div>
@@ -116,7 +116,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
                         <p className="text-slate-500 text-sm leading-relaxed">Focus on premium user experience and smooth interactions</p>
                       </div>
                     </div>
-                    <div className="p-5 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-4 hover:bg-white/10 transition-colors group/feat">
+                    <div className="p-5 rounded-2xl bg-slate-950/40 border border-white/5 flex items-start gap-4 hover:bg-white/5 transition-colors group/feat">
                       <div className="p-2 bg-indigo-500/10 rounded-xl group-hover/feat:bg-indigo-500/20 transition-colors">
                         <CheckCircle2 className="text-indigo-400" size={20} />
                       </div>
@@ -157,7 +157,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
                     </h5>
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag, idx) => (
-                        <div key={idx} className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 text-sm font-medium hover:text-blue-400 hover:border-blue-400/50 transition-all cursor-default">
+                        <div key={idx} className="px-4 py-2 rounded-xl bg-slate-900 border border-white/5 text-slate-300 text-sm font-medium hover:text-blue-400 hover:border-blue-400/30 transition-all cursor-default">
                           {tag}
                         </div>
                       ))}
