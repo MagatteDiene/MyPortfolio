@@ -43,14 +43,35 @@ const Experience = () => {
           </p>
         </motion.div>
 
-        <div className="space-y-8">
+        <motion.div 
+          className="space-y-8"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1
+              }
+            }
+          }}
+        >
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              variants={{
+                hidden: { opacity: 0, x: index % 2 === 0 ? -20 : 20 },
+                show: { 
+                  opacity: 1, 
+                  x: 0,
+                  transition: {
+                    duration: 0.5,
+                    ease: "easeOut"
+                  }
+                }
+              }}
               className="glass-card p-8 md:p-12 rounded-[3rem] group hover:border-blue-500/30 transition-all duration-500"
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
@@ -87,7 +108,7 @@ const Experience = () => {
               </ul>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -6,28 +6,28 @@ const Hero = () => {
     <section id="home" className="min-h-screen flex items-center justify-center pt-16 relative">
       <div className="max-container px-4 flex flex-col-reverse md:flex-row items-center gap-12 relative z-10">
         <motion.div 
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="flex-1 text-center md:text-left"
         >
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.1, duration: 0.4 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
             </span>
-            {/* Available for New Opportunities */}
+            Available for New Opportunities
           </motion.div>
 
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
             className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
           >
             Pape Magatte <br />
@@ -35,18 +35,18 @@ const Hero = () => {
           </motion.h1>
 
           <motion.h3 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
             className="text-2xl md:text-3xl text-slate-300 font-medium mb-8"
           >
             Software Developer
           </motion.h3>
 
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
             className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto md:mx-0 leading-relaxed"
           >
             Final-year Engineering Technology Student in Computer Science.
@@ -55,9 +55,9 @@ const Hero = () => {
           </motion.p>
           
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
             className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
           >
             <motion.a 
@@ -108,7 +108,7 @@ const Hero = () => {
                 <img 
                   src="/profile.png" 
                   alt="Pape Magatte Ndiaye DIENE" 
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                   onError={(e) => {
                     e.target.onerror = null;
                     e.target.style.display = 'none';

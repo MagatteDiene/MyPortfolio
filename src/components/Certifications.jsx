@@ -86,7 +86,7 @@ const Certifications = () => {
     {
       title: "Networking Basics",
       issuer: "Cisco Networking Academy",
-      date: "2024",
+      date: "2026",
       image: "/networking-basics.png",
       pdf: "/NetworkingBasicsCertification.pdf",
       description: "Foundational knowledge of networking concepts, protocols, and architecture."
@@ -94,7 +94,7 @@ const Certifications = () => {
     {
       title: "Networking Devices and Initial Configuration",
       issuer: "Cisco Networking Academy",
-      date: "2024",
+      date: "2026",
       image: "/networking-devices-and-initial-configuration.png",
       pdf: "/NetworkingDevicesandBasic.pdf",
       description: "Hands-on skills for configuring networking devices and establishing basic connectivity."
@@ -114,7 +114,7 @@ const Certifications = () => {
             Certifications
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            Professional recognitions and technical validations of my expertise in networking and systems.
+            Professional recognitions and technical validations of my expertise.
           </p>
         </motion.div>
 

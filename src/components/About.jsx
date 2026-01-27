@@ -14,10 +14,10 @@ const About = () => {
       <div className="max-container px-4">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="relative"
           >
             <div className="aspect-square glass-card rounded-[3rem] p-4 relative z-10 group">
@@ -25,7 +25,7 @@ const About = () => {
                 <img 
                   src="/study_hard.jpg" 
                   alt="Work Space" 
-                  className="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                  className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
               </div>
@@ -37,9 +37,10 @@ const About = () => {
 
           <div className="space-y-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
             >
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
                 Passionate about <br />
@@ -60,14 +61,30 @@ const About = () => {
               </div>
             </motion.div>
 
-            <div className="grid grid-cols-2 gap-6">
+            <motion.div 
+              className="grid grid-cols-2 gap-6"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={{
+                hidden: { opacity: 0 },
+                show: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.05 }
+                }
+              }}
+            >
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  variants={{
+                    hidden: { opacity: 0, y: 15 },
+                    show: { 
+                      opacity: 1, 
+                      y: 0,
+                      transition: { duration: 0.4, ease: "easeOut" }
+                    }
+                  }}
                   whileHover={{ y: -5 }}
                   className="glass-card p-6 rounded-[2rem] group hover:border-blue-500/50 transition-all duration-300"
                 >
@@ -78,7 +95,7 @@ const About = () => {
                   <div className="text-xs text-slate-500 uppercase tracking-widest font-bold">{stat.label}</div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

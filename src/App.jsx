@@ -19,26 +19,26 @@ function App() {
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div 
           animate={{
-            x: [0, 100, 0],
-            y: [0, 50, 0],
+            x: [0, 50, 0],
+            y: [0, 30, 0],
           }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
           className="blob top-[-10%] left-[-10%] bg-blue-500/10" 
         />
         <motion.div 
           animate={{
-            x: [0, -100, 0],
-            y: [0, 100, 0],
+            x: [0, -50, 0],
+            y: [0, 60, 0],
           }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
           className="blob bottom-[-10%] right-[-10%] bg-purple-500/10" 
         />
         <motion.div 
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.05, 0.1, 0.05],
+            scale: [1, 1.1, 1],
+            opacity: [0.05, 0.08, 0.05],
           }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
           className="blob top-[30%] right-[20%] bg-indigo-500/5" 
         />
       </div>
