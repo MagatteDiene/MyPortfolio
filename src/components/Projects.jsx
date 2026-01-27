@@ -8,7 +8,7 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "SALAMA – Public Procurement & Supply Chain",
+      title: "SALAMA",
       description: "Large-scale application for digitized procurement and logistics tracking. Features include e-Procurement (AO, submission, evaluation), logistics (fleet management, shipment tracking), and automated reporting.",
       fullDescription: "SALAMA is a comprehensive system designed for digitized public procurement management and supply chain tracking. \n\n Key highlights: \n - Architecture: Robust Laravel 8 backend with a hybrid API (REST & GraphQL) handling 100+ database tables. \n - e-Procurement: Full digitization of purchasing processes from needs expression to contract award. \n - Logistics: Real-time shipment tracking, fleet management (vehicles, drivers), and geographical delivery planning. \n - UI/UX: Dynamic interfaces built with Blade and AngularJS, featuring decision-making dashboards and automated PDF/Excel generation. \n - Communication: Automated workflow notifications and granular permission management via Spatie.",
       tags: ["Laravel", "AngularJS", "GraphQL", "PostgreSQL"],
