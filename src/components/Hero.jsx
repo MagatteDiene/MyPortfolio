@@ -15,8 +15,8 @@ const Hero = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
       transition: {
         type: "spring",
@@ -29,7 +29,7 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-32 md:pt-16 relative">
-      <motion.div 
+      <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="show"
@@ -45,10 +45,10 @@ const Hero = () => {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
             </span>
             <span className="will-change-transform">
-              </span>
+            </span>
           </motion.div>
 
-          <motion.h1 
+          <motion.h1
             variants={itemVariants}
             className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight will-change-transform"
           >
@@ -56,14 +56,14 @@ const Hero = () => {
             <span className="text-gradient">Ndiaye DIENE</span>
           </motion.h1>
 
-          <motion.h3 
+          <motion.h3
             variants={itemVariants}
             className="text-2xl md:text-3xl text-slate-300 font-medium mb-8 will-change-transform"
           >
             Software Developer
           </motion.h3>
 
-          <motion.p 
+          <motion.p
             variants={itemVariants}
             className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto md:mx-0 leading-relaxed will-change-transform"
           >
@@ -71,13 +71,13 @@ const Hero = () => {
             Passionate about software development and innovative technologies, with a particular interest in Artificial Intelligence.
             Combining academic rigor with practical experience in project management and application development.
           </motion.p>
-          
-          <motion.div 
+
+          <motion.div
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
           >
-            <motion.a 
-              href="#projects" 
+            <motion.a
+              href="#projects"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               className="px-10 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-semibold transition-all flex items-center justify-center gap-2 shadow-[0_20px_50px_rgba(59,130,246,0.3)] group will-change-transform"
@@ -85,8 +85,8 @@ const Hero = () => {
               View My Work
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </motion.a>
-            <motion.a 
-              href="/CV_DIENE_ENGLISH.pdf" 
+            <motion.a
+              href="/CV_DIENE_ENGLISH.pdf"
               download
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
@@ -97,11 +97,11 @@ const Hero = () => {
             </motion.a>
           </motion.div>
         </div>
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ 
+          transition={{
             type: "spring",
             stiffness: 60,
             damping: 15,
@@ -111,12 +111,12 @@ const Hero = () => {
         >
           {/* Animated rings */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <motion.div 
+            <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               className="w-[120%] h-[120%] border border-dashed border-blue-500/20 rounded-full"
             />
-            <motion.div 
+            <motion.div
               animate={{ rotate: -360 }}
               transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
               className="w-[110%] h-[110%] border border-dashed border-purple-500/20 rounded-full absolute"
@@ -126,9 +126,9 @@ const Hero = () => {
           <div className="relative z-10 p-4 flex justify-center">
             <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-[400px] md:h-[400px] rounded-[3rem] glass-card p-4 relative overflow-hidden group">
               <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-slate-900 relative">
-                <img 
-                  src="/profile.png" 
-                  alt="Pape Magatte Ndiaye DIENE" 
+                <img
+                  src="/pfp_ai.png"
+                  alt="Pape Magatte Ndiaye DIENE"
                   className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                   onError={(e) => {
                     e.target.onerror = null;
@@ -142,9 +142,9 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
               </div>
             </div>
-            
+
             {/* Floating Badges */}
-            <motion.div 
+            <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity }}
               className="absolute -top-4 -right-4 glass-card p-4 rounded-2xl flex items-center gap-3 shadow-2xl border-white/10"
@@ -155,7 +155,7 @@ const Hero = () => {
               <div className="text-sm font-bold text-white pr-2">Final-year</div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 5, repeat: Infinity }}
               className="absolute -bottom-4 -left-4 glass-card p-4 rounded-2xl flex items-center gap-3 shadow-2xl border-white/10"
