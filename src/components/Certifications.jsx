@@ -65,12 +65,20 @@ const CertificationModal = ({ isOpen, onClose, certification }) => {
             </div>
 
             {/* PDF Viewer / Content */}
-            <div className="flex-1 bg-slate-800/50 relative">
-              <iframe
-                src={`${certification.pdf}#toolbar=0`}
-                className="w-full h-full border-none"
-                title={certification.title}
-              />
+            <div className="flex-1 bg-slate-800/50 relative flex items-center justify-center">
+              {certification.pdf?.toLowerCase().endsWith('.pdf') ? (
+                <iframe
+                  src={`${certification.pdf}#toolbar=0`}
+                  className="w-full h-full border-none"
+                  title={certification.title}
+                />
+              ) : (
+                <img
+                  src={certification.pdf}
+                  alt={certification.title}
+                  className="w-full h-full object-contain p-4"
+                />
+              )}
             </div>
           </motion.div>
         </div>
@@ -106,6 +114,14 @@ const Certifications = () => {
       image: "/networking-devices-and-initial-configuration.png",
       pdf: "/NetworkingDevicesandBasic.pdf",
       description: "Hands-on skills for configuring networking devices and establishing basic connectivity."
+    },
+    {
+      title: "Foundational C# with Microsoft",
+      issuer: "Microsoft (freeCodeCamp)",
+      date: "2026",
+      image: "/Foundational-CSharp-with-Microsoft-Certification.png",
+      pdf: "/Foundational-CSharp-with-Microsoft-Certification.png",
+      description: "Certification validating the fundamentals of C# development with Microsoft. It covers core concepts such as data types, control structures, functions, as well as best practices in object-oriented programming."
     }
   ];
 
@@ -122,7 +138,7 @@ const Certifications = () => {
             Certifications
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-             Technical skills and certifications achieved through my studies and projects.
+            Technical skills and certifications achieved through my studies and projects.
           </p>
         </motion.div>
 
@@ -146,7 +162,7 @@ const Certifications = () => {
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60" />
-                  
+
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-blue-600/10 backdrop-blur-[2px]">
                     <div className="bg-white/10 backdrop-blur-md p-3 rounded-full border border-white/20">
