@@ -7,8 +7,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#3b82f6', // Example primary color
-      }
+        accent: {
+          light: '#93a5ff',
+          DEFAULT: '#3d53f0',
+          dark: '#2e41d4',
+        },
+      },
+      fontFamily: {
+        sans: ['Manrope', 'system-ui', 'sans-serif'],
+        display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+      },
     },
   },
   plugins: [],

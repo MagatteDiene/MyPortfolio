@@ -5,65 +5,60 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-  }
-  
-  body {
-    @apply bg-slate-950 text-slate-100 antialiased selection:bg-blue-500/30 selection:text-blue-200;
-    font-family: 'Inter', system-ui, sans-serif;
+    scroll-padding-top: 6rem;
   }
 
-  /* Custom Scrollbar */
+  body {
+    @apply bg-[#fafafa] text-zinc-900 font-sans antialiased selection:bg-accent/15 selection:text-accent-dark;
+  }
+
   ::-webkit-scrollbar {
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-slate-950;
+    @apply bg-[#fafafa];
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-slate-800 rounded-full border-2 border-slate-950 hover:bg-slate-700 transition-colors;
+    @apply bg-zinc-300 rounded-full hover:bg-zinc-400;
   }
 }
 
 @layer components {
-  .glass-card {
-    @apply bg-slate-900/40 backdrop-blur-xl border border-white/5 shadow-2xl;
-  }
-  
-  .glass-navbar {
-    @apply bg-transparent;
-  }
-
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400;
-  }
-
   .max-container {
-    @apply max-w-7xl mx-auto;
+    @apply max-w-6xl mx-auto px-6;
+  }
+
+  .kicker {
+    @apply text-xs font-semibold uppercase tracking-[0.25em] text-accent;
+  }
+
+  .card {
+    @apply bg-white border border-zinc-200 rounded-2xl;
+  }
+
+  .chip {
+    @apply px-3 py-1.5 rounded-lg bg-zinc-100 border border-zinc-200 text-zinc-700 text-sm font-medium;
+  }
+
+  .field {
+    @apply w-full bg-white border border-zinc-300 rounded-xl px-5 py-3.5 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-accent transition-colors;
   }
 }
 
-/* Noise effect overlay */
-.noise-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  content: "";
-  opacity: 0.03;
-  z-index: 50;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+/* Tech stack marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
-
-/* Animated Blobs */
-.blob {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-  filter: blur(80px);
-  border-radius: 50%;
-  z-index: 0;
-  pointer-events: none;
+.marquee-track {
+  animation: marquee 36s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }

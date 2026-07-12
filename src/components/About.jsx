@@ -1,129 +1,90 @@
 import { motion } from 'framer-motion';
-import { Award, Code, GraduationCap, Briefcase } from 'lucide-react';
+import { fadeUp, stagger, viewport } from '../motion';
 
-const About = () => {
-  const stats = [
-    { label: "Skills", value: "Software Engineering", icon: Code },
-    { label: "Years of Experience", value: "02", icon: GraduationCap },
-    { label: "Class Rank (During the first year of the engineering cycle)", value: "01st", icon: Award },
-    { label: "Projects", value: "5+", icon: Briefcase }
-  ];
+const focusAreas = [
+  {
+    n: '01',
+    title: 'Backend systems',
+    desc: 'Laravel APIs (REST & GraphQL), data modeling, and complex business workflows — procurement, real estate, HR.',
+  },
+  {
+    n: '02',
+    title: 'Frontend development',
+    desc: 'React and AngularJS interfaces, Tailwind CSS, responsive dashboards on top of those backends.',
+  },
+  {
+    n: '03',
+    title: 'Applied AI',
+    desc: 'RAG pipelines with LangChain and ChromaDB, LLM APIs (OpenAI, Groq), classic ML with scikit-learn.',
+  },
+];
 
-  return (
-    <section id="about" className="py-24 relative overflow-hidden">
-      <div className="max-container px-4">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50, scale: 0.95 }}
-            whileInView={{ opacity: 1, x: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ 
-              type: "spring",
-              stiffness: 50,
-              damping: 15,
-              mass: 1
-            }}
-            className="relative will-change-transform"
-          >
-            <div className="aspect-square glass-card rounded-[3rem] p-4 relative z-10 group">
-              <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-slate-900 relative">
-                <img 
-                  src="/study_hard.jpg" 
-                  alt="Work Space" 
-                  className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
-              </div>
-            </div>
-            {/* Decorative elements */}
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-700" />
-          </motion.div>
+const About = () => (
+  <section id="about" className="py-24 md:py-32">
+    <div className="max-container grid lg:grid-cols-[0.38fr,0.62fr] gap-12 lg:gap-20 items-start">
+      <motion.div
+        variants={stagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+        className="lg:sticky lg:top-28"
+      >
+        <motion.p variants={fadeUp} className="kicker mb-4">
+          01 · About
+        </motion.p>
+        <motion.h2
+          variants={fadeUp}
+          className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 tracking-tight"
+        >
+          Full-stack development, backend at the core
+        </motion.h2>
+      </motion.div>
 
-          <div className="space-y-8">
+      <div>
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+          className="space-y-6 text-zinc-600 text-lg leading-relaxed mb-14"
+        >
+          <motion.p variants={fadeUp}>
+            I'm a Computer Science graduate of Polytechnic School of Dakar (ESP),
+            working as a Fullstack Developer (Backend Focus) at HTSOFT Sénégal since November 2024.
+            On the research side, I built SamaVoie, a hybrid RAG system for academic guidance in
+            Senegal, as my thesis project.
+          </motion.p>
+          <motion.p variants={fadeUp}>
+            My first year of the engineering cycle ended with a first-place class ranking,
+            and I keep the same standard in the code I ship.
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+        >
+          {focusAreas.map((area) => (
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ 
-                type: "spring",
-                stiffness: 50,
-                damping: 15,
-                mass: 1
-              }}
-              className="will-change-transform"
+              key={area.n}
+              variants={fadeUp}
+              className="group grid grid-cols-[3rem,1fr] gap-5 py-7 border-t border-zinc-200 last:border-b"
             >
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                Passionate about <br />
-                <span className="text-gradient">Problem Solving</span>
-              </h2>
-              <div className="space-y-6 text-slate-400 leading-relaxed text-lg">
-                <p>
-                  I am a final-year Engineering Technology Student in Computer Science at ESP Dakar. 
-                  My journey is defined by a passion for software development and Artificial Intelligence.
-                </p>
-                <p>
-                  My first engineering cycle year was marked by consistent academic performance, resulting in a first-place ranking.
-                </p>
-                <p>
-                  I blend academic rigor with practical experience in full-stack development, 
-                  always aiming for elegant and efficient solutions to complex problems.
-                </p>
+              <span className="font-display font-semibold text-accent pt-0.5">{area.n}</span>
+              <div>
+                <h3 className="font-display text-xl font-semibold text-zinc-900 mb-2 group-hover:text-accent transition-colors duration-200">
+                  {area.title}
+                </h3>
+                <p className="text-zinc-600 leading-relaxed">{area.desc}</p>
               </div>
             </motion.div>
-
-            <motion.div 
-              className="grid grid-cols-2 gap-6"
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={{
-                hidden: { opacity: 0 },
-                show: {
-                  opacity: 1,
-                  transition: { 
-                    staggerChildren: 0.1,
-                    delayChildren: 0.2
-                  }
-                }
-              }}
-            >
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  variants={{
-                    hidden: { opacity: 0, scale: 0.8, y: 20 },
-                    show: { 
-                      opacity: 1, 
-                      scale: 1,
-                      y: 0,
-                      transition: { 
-                        type: "spring",
-                        stiffness: 100,
-                        damping: 15
-                      }
-                    }
-                  }}
-                  whileHover={{ 
-                    y: -8,
-                    scale: 1.05,
-                    transition: { type: "spring", stiffness: 400, damping: 10 }
-                  }}
-                  className="glass-card p-6 rounded-[2rem] group hover:border-blue-500/50 transition-all duration-300 will-change-transform"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4 text-blue-500 group-hover:scale-110 transition-transform">
-                    <stat.icon size={24} />
-                  </div>
-                  <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-                  <div className="text-xs text-slate-500 uppercase tracking-widest font-bold">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
+          ))}
+        </motion.div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default About;

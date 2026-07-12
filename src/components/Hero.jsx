@@ -1,173 +1,146 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, Download } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { ArrowRight, Download, Github, Linkedin } from 'lucide-react';
+import { fadeUp, stagger, EASE } from '../motion';
+
+const nameLines = [
+  ['Pape', 'Magatte'],
+  ['Ndiaye', 'Diene'],
+];
+
+const stats = [
+  { value: '02+', label: 'Years of experience' },
+  { value: '10+', label: 'Projects built' },
+  { value: '1st', label: 'Class rank — engineering cycle' },
+  { value: '05', label: 'Certifications' },
+];
+
+const wordReveal = {
+  hidden: { y: '110%' },
+  show: { y: 0, transition: { duration: 0.8, ease: EASE } },
+};
 
 const Hero = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-        mass: 1
-      }
-    }
-  };
+  const { scrollY } = useScroll();
+  const photoY = useTransform(scrollY, [0, 600], [0, 48]);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-32 md:pt-16 relative">
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="show"
-        className="max-container px-4 flex flex-col md:flex-row items-center gap-12 relative z-10"
-      >
-        <div className="flex-1 text-center md:text-left order-2 md:order-1">
-          <motion.div
-            variants={itemVariants}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-            </span>
-            <span className="will-change-transform">
-            </span>
+    <section id="home" className="min-h-screen flex items-center pt-28 pb-16 relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none [background:radial-gradient(700px_circle_at_15%_20%,rgba(61,83,240,0.06),transparent_60%)]" />
+
+      <div className="max-container w-full relative">
+        <div className="grid lg:grid-cols-[1.1fr,0.9fr] items-center gap-14">
+          <motion.div variants={stagger} initial="hidden" animate="show">
+            <motion.p variants={fadeUp} className="kicker mb-6">
+              Software Engineer · AI &amp; Full-Stack Development
+            </motion.p>
+
+            <h1 className="font-display text-5xl md:text-7xl font-bold text-zinc-900 tracking-tight leading-[1.04] mb-7">
+              {nameLines.map((line, i) => (
+                <span key={i} className="block overflow-hidden pb-1 -mb-1">
+                  {line.map((word) => (
+                    <motion.span key={word} variants={wordReveal} className="inline-block mr-[0.28em] last:mr-0">
+                      {word}
+                    </motion.span>
+                  ))}
+                </span>
+              ))}
+            </h1>
+
+            <motion.p
+              variants={fadeUp}
+              className="text-zinc-600 text-lg leading-relaxed max-w-xl mb-10"
+            >
+              Graduate of Polytechnic School of Dakar (ESP) in Computer Science.
+              Fullstack Developer (Backend Focus) at HTSOFT since November 2024,
+              building Laravel applications with AngularJS and React — and hybrid RAG
+              systems on the AI side.
+            </motion.p>
+
+            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4">
+              <a
+                href="#projects"
+                className="group inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-7 py-3.5 rounded-full transition-colors duration-200"
+              >
+                View my work
+                <ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-1" />
+              </a>
+              <a
+                href="/CV_DIENE_ENGLISH.pdf"
+                download
+                className="inline-flex items-center gap-2 border border-zinc-300 hover:border-zinc-900 text-zinc-900 font-semibold px-7 py-3.5 rounded-full transition-colors duration-200"
+              >
+                Download CV
+                <Download size={18} />
+              </a>
+              <div className="flex items-center gap-3 sm:ml-1">
+                <a
+                  href="https://github.com/MagatteDiene"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  className="w-11 h-11 rounded-full border border-zinc-300 flex items-center justify-center text-zinc-500 hover:text-zinc-900 hover:border-zinc-900 transition-colors duration-200"
+                >
+                  <Github size={19} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/pape-magatte-ndiaye-diene-2990862b3/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-11 h-11 rounded-full border border-zinc-300 flex items-center justify-center text-zinc-500 hover:text-zinc-900 hover:border-zinc-900 transition-colors duration-200"
+                >
+                  <Linkedin size={19} />
+                </a>
+              </div>
+            </motion.div>
           </motion.div>
 
-          <motion.h1
-            variants={itemVariants}
-            className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight will-change-transform"
-          >
-            Pape Magatte <br />
-            <span className="text-gradient">Ndiaye DIENE</span>
-          </motion.h1>
-
-          <motion.h3
-            variants={itemVariants}
-            className="text-2xl md:text-3xl text-slate-300 font-medium mb-8 will-change-transform"
-          >
-            Software Developer
-          </motion.h3>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto md:mx-0 leading-relaxed will-change-transform"
-          >
-            Final-year Engineering Technology Student in Computer Science.
-            Passionate about software development and innovative technologies, with a particular interest in Artificial Intelligence.
-            Combining academic rigor with practical experience in project management and application development.
-          </motion.p>
-
           <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
+            className="max-w-sm w-full mx-auto lg:max-w-md"
           >
-            <motion.a
-              href="#projects"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-semibold transition-all flex items-center justify-center gap-2 shadow-[0_20px_50px_rgba(59,130,246,0.3)] group will-change-transform"
-            >
-              View My Work
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </motion.a>
-            <motion.a
-              href="/CV_DIENE_ENGLISH.pdf"
-              download
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 glass-card hover:bg-white/5 text-white rounded-2xl font-semibold transition-all flex items-center justify-center gap-2 will-change-transform"
-            >
-              Download CV
-              <Download size={20} />
-            </motion.a>
+            <div className="relative">
+              <div className="absolute -bottom-4 -right-4 w-3/4 h-3/4 bg-accent rounded-[2rem]" />
+              <motion.div
+                style={{ y: photoY }}
+                className="relative rounded-[2rem] overflow-hidden ring-1 ring-zinc-200 bg-white"
+              >
+                <img
+                  src="/pfp_ai.png"
+                  alt="Pape Magatte Ndiaye Diene"
+                  className="w-full aspect-[4/5] object-cover"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                  }}
+                />
+              </motion.div>
+            </div>
+            <div className="mt-8 flex items-center justify-between gap-4 text-sm">
+              <span className="text-zinc-400 shrink-0">Currently</span>
+              <span className="text-zinc-700 font-medium text-right">Fullstack Developer · HTSOFT Sénégal</span>
+            </div>
           </motion.div>
         </div>
 
+        {/* Stats strip */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{
-            type: "spring",
-            stiffness: 60,
-            damping: 15,
-            delay: 0.2
-          }}
-          className="flex-1 relative order-1 md:order-2 will-change-transform"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: EASE, delay: 0.7 }}
+          className="mt-16 lg:mt-20 pt-8 border-t border-zinc-200 grid grid-cols-2 md:grid-cols-4 gap-8"
         >
-          {/* Animated rings */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="w-[120%] h-[120%] border border-dashed border-blue-500/20 rounded-full"
-            />
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              className="w-[110%] h-[110%] border border-dashed border-purple-500/20 rounded-full absolute"
-            />
-          </div>
-
-          <div className="relative z-10 p-4 flex justify-center">
-            <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-[400px] md:h-[400px] rounded-[3rem] glass-card p-4 relative overflow-hidden group">
-              <div className="w-full h-full rounded-[2.5rem] overflow-hidden bg-slate-900 relative">
-                <img
-                  src="/pfp_ai.png"
-                  alt="Pape Magatte Ndiaye DIENE"
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'flex';
-                  }}
-                />
-                <div className="hidden absolute inset-0 flex items-center justify-center bg-slate-800 text-slate-600 font-bold text-6xl">
-                  PM
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+          {stats.map((stat) => (
+            <div key={stat.label}>
+              <div className="font-display text-3xl md:text-4xl font-bold text-zinc-900 mb-1">
+                {stat.value}
               </div>
+              <div className="text-sm text-zinc-500 leading-snug">{stat.label}</div>
             </div>
-
-            {/* Floating Badges */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute -top-4 -right-4 glass-card p-4 rounded-2xl flex items-center gap-3 shadow-2xl border-white/10"
-            >
-              <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold">
-                CS
-              </div>
-              <div className="text-sm font-bold text-white pr-2">Final-year</div>
-            </motion.div>
-
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 5, repeat: Infinity }}
-              className="absolute -bottom-4 -left-4 glass-card p-4 rounded-2xl flex items-center gap-3 shadow-2xl border-white/10"
-            >
-              <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold">
-                AI
-              </div>
-              <div className="text-sm font-bold text-white pr-2">AI Enthusiast</div>
-            </motion.div>
-          </div>
+          ))}
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 };

@@ -1,125 +1,86 @@
 import { motion } from 'framer-motion';
-import { Briefcase, Building2, Calendar, MapPin } from 'lucide-react';
+import { fadeUp, stagger, viewport } from '../motion';
 
-const Experience = () => {
-  const experiences = [
-    {
-      company: "HTSOFT SENEGAL",
-      role: "Fullstack Developer – Backend Focus",
-      period: "November 2024 - Present",
-      location: "Dakar, Senegal",
-      description: [
-        "Participated in full-stack development, testing, and deployment of web applications.",
-        "Contributed to the modeling, development, and maintenance of web applications using Laravel and JavaScript (AngularJS / React).",
-        "Designed and implemented functional modules, integrated AI-based solutions, and managed and optimized databases.",
-        "Collaborated with cross-functional teams to deliver high-quality software solutions."
-      ]
-    },
-    {
-      company: "HTSOFT SENEGAL",
-      role: "Web Development Intern",
-      period: "May 2024 - November 2024",
-      location: "Dakar, Senegal",
-      description: [
-        "Developed an online seminar management platform as part of the final-year project for the Higher National Diploma in Computer Science."
-      ]
-    }
-  ];
+const experiences = [
+  {
+    company: "HTSOFT Sénégal",
+    role: "Fullstack Developer — Backend Focus",
+    period: "November 2024 — Present",
+    location: "Dakar, Senegal",
+    description: [
+      "Full-stack development, testing, and deployment of Laravel business applications with AngularJS and React frontends.",
+      "Design and implementation of functional modules, integration of AI-based features, database modeling and optimization.",
+      "REST and GraphQL API development, server configuration (Nginx).",
+    ],
+  },
+  {
+    company: "HTSOFT Sénégal",
+    role: "Web Development Intern",
+    period: "May 2024 — November 2024",
+    location: "Dakar, Senegal",
+    description: [
+      "Built an online seminar management platform as the final-year project for the Higher National Diploma in Computer Science.",
+    ],
+  },
+];
 
-  return (
-    <section id="experience" className="py-24 relative overflow-hidden">
-      <div className="max-container px-4">
+const Experience = () => (
+  <section id="experience" className="py-24 md:py-32">
+    <div className="max-container">
+      <div className="bg-zinc-950 rounded-[2rem] p-8 md:p-14 grid lg:grid-cols-[0.32fr,0.68fr] gap-10 lg:gap-16 items-start">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            Professional <span className="text-gradient">Journey</span>
-          </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
-            A timeline of my professional experience and the impact I've made in various roles.
-          </p>
-        </motion.div>
-
-        <motion.div 
-          className="space-y-8"
+          variants={stagger}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={{
-            hidden: { opacity: 0 },
-            show: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.15,
-                delayChildren: 0.2
-              }
-            }
-          }}
+          viewport={viewport}
+          className="lg:sticky lg:top-28"
         >
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              variants={{
-                hidden: { 
-                  opacity: 0, 
-                  x: index % 2 === 0 ? -50 : 50,
-                  scale: 0.95
-                },
-                show: { 
-                  opacity: 1, 
-                  x: 0,
-                  scale: 1,
-                  transition: {
-                    type: "spring",
-                    stiffness: 60,
-                    damping: 15,
-                    mass: 1
-                  }
-                }
-              }}
-              className="glass-card p-8 md:p-12 rounded-[3rem] group hover:border-blue-500/30 transition-all duration-500 will-change-transform"
-            >
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
-                <div className="flex items-center gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform duration-500">
-                    <Briefcase size={32} />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">{exp.role}</h3>
-                    <div className="flex items-center gap-2 text-blue-500/80 font-semibold">
-                      <Building2 size={16} />
-                      {exp.company}
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col md:items-end gap-2">
-                  <span className="px-4 py-1.5 rounded-full bg-slate-950/50 border border-white/5 text-slate-400 text-sm font-medium flex items-center gap-2">
-                    <Calendar size={14} />
-                    {exp.period}
-                  </span>
-                  <span className="text-slate-500 text-sm font-medium flex items-center gap-2">
-                    <MapPin size={14} />
-                    {exp.location}
-                  </span>
-                </div>
+          <motion.p variants={fadeUp} className="kicker !text-accent-light mb-4">
+            03 · Experience
+          </motion.p>
+          <motion.h2
+            variants={fadeUp}
+            className="font-display text-3xl md:text-4xl font-bold text-white tracking-tight"
+          >
+            Where I've worked
+          </motion.h2>
+        </motion.div>
+
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+          className="relative border-l border-white/10 ml-1.5 space-y-14"
+        >
+          {experiences.map((exp) => (
+            <motion.article key={exp.role} variants={fadeUp} className="relative pl-10">
+              <span className="absolute -left-[5px] top-2 w-[9px] h-[9px] rounded-full bg-accent-light ring-4 ring-accent/25" />
+
+              <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-1">
+                <h3 className="font-display text-xl md:text-2xl font-semibold text-white">
+                  {exp.role}
+                </h3>
+                <span className="text-accent-light font-medium">{exp.company}</span>
               </div>
-              <ul className="grid md:grid-cols-2 gap-4">
+              <p className="text-sm text-zinc-500 mb-5">
+                {exp.period} · {exp.location}
+              </p>
+
+              <ul className="space-y-2.5">
                 {exp.description.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-slate-400 group-hover:text-slate-300 transition-colors">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
-                    <span className="leading-relaxed">{item}</span>
+                  <li key={idx} className="flex items-start gap-3 text-zinc-400 leading-relaxed">
+                    <span className="mt-2.5 w-1 h-1 rounded-full bg-zinc-600 shrink-0" />
+                    {item}
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </motion.article>
           ))}
         </motion.div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Experience;

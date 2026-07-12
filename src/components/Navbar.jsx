@@ -1,108 +1,93 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Code } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { EASE } from '../motion';
+
+const navLinks = [
+  { name: 'About', href: '#about' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Certifications', href: '#certifications' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Education', href: '#education' },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Certifications', href: '#certifications' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'}`}>
-      <div className="max-container px-4">
-        <div className={`flex items-center justify-between h-16 rounded-2xl px-6 border transition-all duration-300 ${
-          scrolled 
-            ? 'bg-slate-900/80 backdrop-blur-lg border-white/10 shadow-xl' 
-            : 'bg-slate-900/20 backdrop-blur-md border-white/5 shadow-none'
-        }`}>
-          <div className="flex-shrink-0 flex items-center">
-            <motion.a 
-              href="#home" 
-              className="flex items-center gap-2"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-[#fafafa]/85 backdrop-blur-md border-b border-zinc-200'
+          : 'bg-transparent border-b border-transparent'
+      }`}
+    >
+      <div className="max-container flex items-center justify-between h-16">
+        <a href="#home" className="font-display text-lg font-bold text-zinc-900 tracking-tight">
+          Magatte<span className="text-accent">.dev</span>
+        </a>
+
+        <nav className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="relative text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors duration-200 group"
             >
-              <img 
-                src="/logo.svg" 
-                alt="Magatte.dev" 
-                className="h-10 w-auto object-contain brightness-110"
-              />
-            </motion.a>
-          </div>
-          <div className="hidden md:block">
-            <div className="flex items-center space-x-1">
-              {navLinks.map((link) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  className="text-slate-400 hover:text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 relative group"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ y: 0 }}
-                >
-                  <span className="relative z-10">{link.name}</span>
-                  <motion.div 
-                    className="absolute inset-0 bg-blue-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"
-                    layoutId="nav-hover"
-                  />
-                  <div className="absolute bottom-1 left-4 right-4 h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-                </motion.a>
-              ))}
-            </div>
-          </div>
-          <div className="flex md:hidden">
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </motion.button>
-          </div>
-        </div>
+              {link.name}
+              <span className="absolute -bottom-1 left-0 h-px w-full bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+            </a>
+          ))}
+          <a
+            href="#contact"
+            className="text-sm font-semibold text-white bg-accent hover:bg-accent-dark px-5 py-2 rounded-full transition-colors duration-200"
+          >
+            Contact
+          </a>
+        </nav>
+
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden p-2 text-zinc-500 hover:text-zinc-900 transition-colors"
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </div>
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden absolute top-full left-0 w-full p-4 z-40"
+          <motion.nav
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: EASE }}
+            className="md:hidden overflow-hidden bg-[#fafafa]/95 backdrop-blur-md border-b border-zinc-200"
           >
-            <div className="glass-card rounded-[2rem] p-4 space-y-2">
-              {navLinks.map((link) => (
-                <motion.a
+            <div className="max-container py-4 flex flex-col gap-1">
+              {[...navLinks, { name: 'Contact', href: '#contact' }].map((link) => (
+                <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-slate-400 hover:text-white block px-6 py-4 rounded-2xl text-lg font-medium hover:bg-white/5 transition-all"
-                  whileHover={{ x: 10 }}
+                  className="px-2 py-3 text-zinc-500 hover:text-zinc-900 font-medium transition-colors border-b border-zinc-200/60 last:border-none"
                 >
                   {link.name}
-                </motion.a>
+                </a>
               ))}
             </div>
-          </motion.div>
+          </motion.nav>
         )}
       </AnimatePresence>
-    </nav>
+    </header>
   );
 };
 
