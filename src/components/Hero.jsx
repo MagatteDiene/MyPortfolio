@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Download, Github, Linkedin } from 'lucide-react';
+import { ArrowRight, ExternalLink, Github, Linkedin } from 'lucide-react';
 import { fadeUp, stagger, EASE } from '../motion';
 
 const nameLines = [
@@ -66,11 +66,12 @@ const Hero = () => {
               </a>
               <a
                 href="/DIENE-CV-FINAL-2026.pdf"
-                download
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border border-zinc-300 hover:border-zinc-900 text-zinc-900 font-semibold px-7 py-3.5 rounded-full transition-colors duration-200"
               >
-                Download CV
-                <Download size={18} />
+                View CV
+                <ExternalLink size={18} />
               </a>
               <div className="flex items-center gap-3 sm:ml-1">
                 <a
