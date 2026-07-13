@@ -65,7 +65,7 @@ const Hero = () => {
                 <ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-1" />
               </a>
               <a
-                href="/CV_DIENE_ENGLISH.pdf"
+                href="/DIENE-CV-FINAL-2026.pdf"
                 download
                 className="inline-flex items-center gap-2 border border-zinc-300 hover:border-zinc-900 text-zinc-900 font-semibold px-7 py-3.5 rounded-full transition-colors duration-200"
               >
