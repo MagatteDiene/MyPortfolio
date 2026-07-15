@@ -4,19 +4,19 @@ import SectionHeading from './SectionHeading';
 
 const education = [
   {
-    degree: "Engineering Technology Degree in Computer Science",
+    degree: "Technology Engineering Degree in Computer Science",
     school: "Polytechnic School of Dakar (ESP)",
     year: "2024 — 2026",
     description: "Graduated. Thesis (SamaVoie): \"Design and implementation of an intelligent web platform for academic guidance in Senegal based on a RAG architecture and LLMs.\""
   },
   {
-    degree: "Higher National Diploma (HND) in Computer Science",
+    degree: "Higher Technology Diploma in Computer Science",
     school: "Polytechnic School of Dakar (ESP)",
     year: "2022 — 2024",
     description: "Final-year project: online seminar management platform, built during my internship at HTSOFT."
   },
   {
-    degree: "Scientific Baccalaureate (S2)",
+    degree: "Baccalaureate – Science Series (S2)",
     school: "Lycée Sergent Malamine Camara, Dakar",
     year: "2021 — 2022",
     description: "Mathematics and physical sciences track."

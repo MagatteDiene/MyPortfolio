@@ -19,7 +19,7 @@ const experiences = [
     period: "May 2024 — November 2024",
     location: "Dakar, Senegal",
     description: [
-      "Built an online seminar management platform as the final-year project for the Higher National Diploma in Computer Science.",
+      "Built an online seminar management platform as the final-year project for the Higher Technology Diploma in Computer Science.",
     ],
   },
 ];
