@@ -49,7 +49,22 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
             </button>
 
             <div className="overflow-y-auto flex-1">
-              {project.image && (
+              {project.video ? (
+                <div className="w-full bg-zinc-950 border-b border-zinc-200 p-4 md:p-8 md:pb-6">
+                  <video
+                    key={project.video}
+                    src={project.video}
+                    controls
+                    autoPlay
+                    playsInline
+                    preload="metadata"
+                    className="w-full max-h-[62vh] rounded-xl ring-1 ring-white/10 bg-black shadow-2xl"
+                  />
+                  <p className="mt-4 text-center text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                    {project.title} — live demo
+                  </p>
+                </div>
+              ) : project.image && (
                 <div className="aspect-[21/9] w-full bg-zinc-100 border-b border-zinc-100">
                   <img
                     src={project.image}

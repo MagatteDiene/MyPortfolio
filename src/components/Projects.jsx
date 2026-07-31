@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Play } from 'lucide-react';
 import { fadeUp, stagger, viewport } from '../motion';
 import SectionHeading from './SectionHeading';
 import ProjectModal from './ProjectModal';
@@ -12,7 +12,8 @@ const featured = {
   fullDescription: "Thesis title: \"Design and implementation of an intelligent web platform for academic guidance in Senegal based on a RAG architecture and LLMs.\" \n\n SamaVoie is a hybrid Retrieval-Augmented Generation (RAG) system designed as my thesis project to help students in Senegal navigate academic orientation. \n\n Key highlights: \n - Hybrid Retrieval: combines dense vector search (ChromaDB) with sparse lexical search (BM25) to maximize recall on both semantic and keyword queries. \n - Fusion: candidate results from both retrievers are merged using Reciprocal Rank Fusion (RRF). \n - Reranking: a cross-encoder reranks fused candidates for higher precision before generation. \n - Generation: answers are produced by Llama-3.3-70B served via the Groq API. \n - Orchestration: the full retrieval-fusion-rerank-generation pipeline is orchestrated with LangChain. \n\n Status: this is a research/thesis project and is not deployed as a public product.",
   tags: ["Python", "LangChain", "ChromaDB", "FastAPI", "Groq API"],
   link: "#",
-  image: "/Adobe%20Express%20-%20LandingPage.gif"
+  image: "/Adobe%20Express%20-%20LandingPage.gif",
+  video: "/samavoie-demo.mp4"
 };
 
 const projects = [
@@ -94,13 +95,20 @@ const Projects = () => {
               <ArrowUpRight size={17} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>
           </div>
-          <div className="relative min-h-[240px] lg:min-h-0 overflow-hidden order-1 lg:order-2">
+          <div className="relative min-h-[240px] lg:min-h-0 overflow-hidden order-1 lg:order-2 bg-zinc-900">
             <img
               src={featured.image}
               alt={featured.title}
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/40 to-transparent hidden lg:block" />
+            {featured.video && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-16 h-16 rounded-full bg-white/90 shadow-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                  <Play size={22} className="text-zinc-900 ml-1" fill="currentColor" />
+                </div>
+              </div>
+            )}
           </div>
         </motion.article>
 
