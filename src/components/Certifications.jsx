@@ -13,6 +13,13 @@ const certifications = [
     pdf: "/certificate-elements-of-ai-fr.png",
   },
   {
+    title: "Google AI Essentials",
+    issuer: "Google",
+    date: "2026",
+    image: "/Google_AI_Essentials_specialisation-png.png",
+    pdf: "/Google_AI_Essentials_specialisation-png.png",
+  },
+  {
     title: "Introduction to Generative AI for Software Development",
     issuer: "DeepLearning.AI (Coursera)",
     date: "2025",
