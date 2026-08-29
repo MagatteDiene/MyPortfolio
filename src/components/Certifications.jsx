@@ -6,11 +6,11 @@ import SectionHeading from './SectionHeading';
 
 const certifications = [
   {
-    title: "Elements of AI",
-    issuer: "University of Helsinki & MinnaLearn",
+    title: "Google AI Professional Certificate",
+    issuer: "Google",
     date: "2026",
-    image: "/certificate-elements-of-ai-fr.png",
-    pdf: "/certificate-elements-of-ai-fr.png",
+    image: "/Google_AI_Professional_Certificate.png",
+    pdf: "/Google_AI_Professional_Certificate.png",
   },
   {
     title: "Google AI Essentials",
@@ -18,6 +18,13 @@ const certifications = [
     date: "2026",
     image: "/Google_AI_Essentials_specialisation-png.png",
     pdf: "/Google_AI_Essentials_specialisation-png.png",
+  },
+  {
+    title: "Elements of AI",
+    issuer: "University of Helsinki & MinnaLearn",
+    date: "2026",
+    image: "/certificate-elements-of-ai-fr.png",
+    pdf: "/certificate-elements-of-ai-fr.png",
   },
   {
     title: "Introduction to Generative AI for Software Development",
