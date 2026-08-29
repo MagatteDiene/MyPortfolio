@@ -10,14 +10,14 @@ const certifications = [
     issuer: "Google",
     date: "2026",
     image: "/Google_AI_Professional_Certificate.png",
-    pdf: "/Google_AI_Professional_Certificate.png",
+    pdf: "/Google_AI_Professional_Certificate.pdf",
   },
   {
     title: "Google AI Essentials",
     issuer: "Google",
     date: "2026",
     image: "/Google_AI_Essentials_specialisation-png.png",
-    pdf: "/Google_AI_Essentials_specialisation-png.png",
+    pdf: "/Google_AI_Essentials_specialisation.pdf",
   },
   {
     title: "Elements of AI",
