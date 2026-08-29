@@ -8,9 +8,9 @@ const experiences = [
     period: "November 2024 — Present",
     location: "Dakar, Senegal",
     description: [
-      "Full-stack development, testing, and deployment of Laravel business applications with AngularJS and React frontends.",
-      "Design and implementation of functional modules, integration of AI-based features, database modeling and optimization.",
-      "REST and GraphQL API development, server configuration (Nginx).",
+      "Designed and built functional modules for several production business applications: a procurement, logistics & distribution ERP, an HR information system, and a real estate management platform.",
+      "Integrated AI-based features into existing applications, notably an automated CV pre-screening module.",
+      "Contributed to UML modeling and technical architecture across several applications, from functional design through deployment.",
     ],
   },
   {
@@ -19,7 +19,8 @@ const experiences = [
     period: "May 2024 — November 2024",
     location: "Dakar, Senegal",
     description: [
-      "Built an online seminar management platform as the final-year project for the Higher Technology Diploma in Computer Science.",
+      "Designed and built an online seminar management platform end-to-end in Laravel, from data modeling to delivery.",
+      "Led the project independently as a final-year internship, validated for the Higher Technology Diploma in Computer Science.",
     ],
   },
 ];

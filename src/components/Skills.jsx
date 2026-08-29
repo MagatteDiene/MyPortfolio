@@ -6,12 +6,12 @@ const techSkills = [
   {
     category: "Languages & Frameworks",
     span: "md:col-span-2",
-    items: ["PHP (Laravel)", "JavaScript (React, AngularJS)", "Python (FastAPI)", "HTML/CSS", "Tailwind CSS"],
+    items: ["PHP (Laravel)", "JavaScript (React, AngularJS)", "Python (FastAPI, Flask)", "Java", "C#", "HTML/CSS", "Tailwind CSS"],
   },
   {
     category: "AI & Machine Learning",
     span: "",
-    items: ["RAG Systems", "Chatbots & Conversational AI", "LLM Orchestration (LangChain)", "Vector Search (ChromaDB)", "LLM APIs (OpenAI, Groq)", "scikit-learn"],
+    items: ["RAG Systems", "RAGAS", "Chatbots & Conversational AI", "LLM Orchestration (LangChain)", "Vector Search (ChromaDB)", "LLM APIs (OpenAI, Groq)", "scikit-learn"],
   },
   {
     category: "Databases",
