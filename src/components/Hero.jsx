@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ExternalLink, Github, Linkedin } from 'lucide-react';
 import { fadeUp, stagger, EASE } from '../motion';
@@ -22,6 +23,17 @@ const wordReveal = {
 const Hero = () => {
   const { scrollY } = useScroll();
   const photoY = useTransform(scrollY, [0, 600], [0, 48]);
+  const cvMenuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (cvMenuRef.current && !cvMenuRef.current.contains(e.target)) {
+        cvMenuRef.current.open = false;
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <section id="home" className="min-h-screen flex items-center pt-28 pb-16 relative overflow-hidden">
@@ -64,15 +76,32 @@ const Hero = () => {
                 View my work
                 <ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-1" />
               </a>
-              <a
-                href="/DIENE-CV-FINAL-2026.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-zinc-300 hover:border-zinc-900 text-zinc-900 font-semibold px-7 py-3.5 rounded-full transition-colors duration-200"
-              >
-                View CV
-                <ExternalLink size={18} />
-              </a>
+              <details ref={cvMenuRef} className="group relative">
+                <summary
+                  className="list-none cursor-pointer inline-flex items-center gap-2 border border-zinc-300 group-open:border-zinc-900 group-hover:border-zinc-900 text-zinc-900 font-semibold px-7 py-3.5 rounded-full transition-colors duration-200 [&::-webkit-details-marker]:hidden"
+                >
+                  View CV
+                  <ExternalLink size={18} />
+                </summary>
+                <div className="absolute left-0 top-full mt-2 w-44 bg-white border border-zinc-200 rounded-2xl shadow-lg overflow-hidden z-20">
+                  <a
+                    href="/CV-PapeMagatteNdiayeDiene-ENGLISH-VFinal.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-5 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-50 hover:text-accent transition-colors duration-150"
+                  >
+                    English
+                  </a>
+                  <a
+                    href="/CV-PapeMagatteNdiayeDiene-VFinal.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-5 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-50 hover:text-accent transition-colors duration-150 border-t border-zinc-100"
+                  >
+                    Français
+                  </a>
+                </div>
+              </details>
               <div className="flex items-center gap-3 sm:ml-1">
                 <a
                   href="https://github.com/MagatteDiene"
