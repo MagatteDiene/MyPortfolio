@@ -11,7 +11,7 @@ const nameLines = [
 const stats = [
   { value: '02+', label: 'Years of experience' },
   { value: '10+', label: 'Projects built' },
-  { value: '1st', label: 'Class rank — engineering cycle' },
+  { value: '1st', label: 'Class rank — 1st year, engineering cycle' },
   { value: '05', label: 'Certifications' },
 ];
 
