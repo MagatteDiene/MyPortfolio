@@ -12,7 +12,7 @@ const stats = [
   { value: '02+', label: 'Years of experience' },
   { value: '10+', label: 'Projects built' },
   { value: '1st', label: 'Class rank — 1st year, engineering cycle' },
-  { value: '05', label: 'Certifications' },
+  { value: '06', label: 'Certifications' },
 ];
 
 const wordReveal = {
