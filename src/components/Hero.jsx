@@ -85,7 +85,7 @@ const Hero = () => {
                 </summary>
                 <div className="absolute left-0 top-full mt-2 w-44 bg-white border border-zinc-200 rounded-2xl shadow-lg overflow-hidden z-20">
                   <a
-                    href="/CV-PapeMagatteNdiayeDiene-ENGLISH-VFinal.pdf"
+                    href="/CVFinal-PapeMagatteNdiayeDiene-ENGLISH.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block px-5 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-50 hover:text-accent transition-colors duration-150"
@@ -93,7 +93,7 @@ const Hero = () => {
                     English
                   </a>
                   <a
-                    href="/CV-PapeMagatteNdiayeDiene-VFinal.pdf"
+                    href="/CVFinal-PapeMagatteNdiayeDiene-FRENCH.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block px-5 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-50 hover:text-accent transition-colors duration-150 border-t border-zinc-100"
