@@ -7,7 +7,11 @@ const education = [
     degree: "Technology Engineering Degree in Computer Science",
     school: "Polytechnic School of Dakar (ESP)",
     year: "2024 — 2026",
-    description: "Graduated. Thesis (SamaVoie): \"Design and implementation of an intelligent web platform for academic guidance in Senegal based on a RAG architecture and LLMs.\""
+    description: "Graduated. Thesis (SamaVoie): \"Design and implementation of an intelligent web platform for academic guidance in Senegal based on a RAG architecture and LLMs.\"",
+    milestones: [
+      { year: "Year 1", rank: "Ranked 1st in class", average: "Annual average: 14.88/20" },
+      { year: "Year 2", rank: "Ranked 4th in class", average: "Annual average: 15.05/20" },
+    ],
   },
   {
     degree: "Higher Technology Diploma in Computer Science",
@@ -49,6 +53,28 @@ const Education = () => (
               </h3>
               <p className="text-sm text-zinc-500 mb-3">{edu.school}</p>
               <p className="text-zinc-600 leading-relaxed max-w-2xl">{edu.description}</p>
+
+              {edu.milestones && (
+                <div className="mt-6 max-w-md">
+                  <div className="relative h-2 mb-3">
+                    <div className="absolute left-1 right-1 top-1/2 -translate-y-1/2 h-px bg-zinc-200" />
+                    <div className="absolute inset-0 flex justify-between items-center">
+                      {edu.milestones.map((m) => (
+                        <span key={m.year} className="w-2 h-2 rounded-full bg-accent" />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex justify-between gap-6">
+                    {edu.milestones.map((m) => (
+                      <div key={m.year}>
+                        <p className="text-xs text-zinc-500 mb-0.5">{m.year}</p>
+                        <p className="text-sm font-semibold text-zinc-900">{m.rank}</p>
+                        <p className="text-xs text-zinc-500 mt-0.5">{m.average}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </motion.div>
         ))}
