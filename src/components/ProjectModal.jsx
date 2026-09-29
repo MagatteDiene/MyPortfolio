@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Building2 } from 'lucide-react';
 import { EASE } from '../motion';
+import TechTag from './TechTag';
 
 const ProjectModal = ({ isOpen, onClose, project }) => {
   useEffect(() => {
@@ -117,9 +118,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
 
                 <div className="flex flex-wrap gap-2 mb-8">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="chip text-xs">
-                      {tag}
-                    </span>
+                    <TechTag key={tag} tag={tag} />
                   ))}
                 </div>
 

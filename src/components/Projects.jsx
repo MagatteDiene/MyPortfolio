@@ -5,6 +5,7 @@ import { fadeUp, stagger, viewport } from '../motion';
 import SectionHeading from './SectionHeading';
 import ProjectModal from './ProjectModal';
 import ProjectCard from './ProjectCard';
+import TechTag from './TechTag';
 
 const featured = {
   title: "SamaVoie",
@@ -108,9 +109,11 @@ const Projects = () => {
             <p className="text-zinc-400 leading-relaxed mb-6 max-w-lg">
               {featured.description}
             </p>
-            <p className="text-xs text-zinc-500 font-medium mb-8">
-              {featured.tags.join(' · ')}
-            </p>
+            <div className="flex flex-wrap gap-1.5 mb-8">
+              {featured.tags.map((tag) => (
+                <TechTag key={tag} tag={tag} dark />
+              ))}
+            </div>
             <span className="inline-flex items-center gap-1.5 text-accent-light font-semibold">
               View case study
               <ArrowUpRight size={17} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

@@ -9,6 +9,7 @@ import {
 } from 'framer-motion';
 import { ArrowUpRight, Building2 } from 'lucide-react';
 import { fadeUp } from '../motion';
+import TechTag from './TechTag';
 
 const ProjectCard = ({ project, onSelect }) => {
   const ref = useRef(null);
@@ -94,9 +95,11 @@ const ProjectCard = ({ project, onSelect }) => {
         <p className="text-sm text-zinc-600 leading-relaxed mb-5 line-clamp-3">
           {project.description}
         </p>
-        <p className="mt-auto text-xs text-zinc-500 font-medium">
-          {project.tags.join(' · ')}
-        </p>
+        <div className="mt-auto flex flex-wrap gap-1.5">
+          {project.tags.map((tag) => (
+            <TechTag key={tag} tag={tag} />
+          ))}
+        </div>
       </div>
 
       <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />

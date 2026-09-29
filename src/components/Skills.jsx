@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { fadeUp, stagger, viewport } from '../motion';
 import SectionHeading from './SectionHeading';
+import TechTag from './TechTag';
 
 const techSkills = [
   {
@@ -48,9 +49,7 @@ const Skills = () => (
             </h3>
             <div className="flex flex-wrap gap-2">
               {group.items.map((skill) => (
-                <span key={skill} className="chip">
-                  {skill}
-                </span>
+                <TechTag key={skill} tag={skill} />
               ))}
             </div>
           </motion.div>
