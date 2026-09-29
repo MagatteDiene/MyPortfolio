@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Play } from 'lucide-react';
+import { ArrowUpRight, Play, Building2 } from 'lucide-react';
 import { fadeUp, stagger, viewport } from '../motion';
 import SectionHeading from './SectionHeading';
 import ProjectModal from './ProjectModal';
 
 const featured = {
   title: "SamaVoie",
-  badge: "Research · Not deployed",
+  badge: "Research · Thesis project",
   description: "Thesis project: a hybrid RAG system for academic guidance in Senegal, combining dense retrieval and BM25 with RRF fusion and cross-encoder reranking.",
   fullDescription: "Thesis title: \"Design and implementation of an intelligent web platform for academic guidance in Senegal based on a RAG architecture and LLMs.\" \n\n SamaVoie is a hybrid Retrieval-Augmented Generation (RAG) system designed as my thesis project to help students in Senegal navigate academic orientation. \n\n Key highlights: \n - Hybrid Retrieval: combines dense vector search (ChromaDB) with sparse lexical search (BM25) to maximize recall on both semantic and keyword queries. \n - Fusion: candidate results from both retrievers are merged using Reciprocal Rank Fusion (RRF). \n - Reranking: a cross-encoder reranks fused candidates for higher precision before generation. \n - Generation: answers are produced by Llama-3.3-70B served via the Groq API. \n - Orchestration: the full retrieval-fusion-rerank-generation pipeline is orchestrated with LangChain. \n\n Status: this is a research/thesis project and is not deployed as a public product.",
   tags: ["Python", "LangChain", "ChromaDB", "FastAPI", "Groq API"],
@@ -18,18 +18,26 @@ const featured = {
 
 const projects = [
   {
-    title: "SALAMA",
+    title: "SignUp",
     description: "Large-scale application for digitized procurement and logistics tracking: e-Procurement (tenders, submission, evaluation), fleet management, shipment tracking, and automated reporting.",
-    fullDescription: "SALAMA is a comprehensive system designed for digitized public procurement management and supply chain tracking. \n\n Key highlights: \n - Architecture: Robust Laravel 8 backend with a hybrid API (REST & GraphQL) handling 100+ database tables. \n - e-Procurement: Full digitization of purchasing processes from needs expression to contract award. \n - Logistics: Real-time shipment tracking, fleet management (vehicles, drivers), and geographical delivery planning. \n - UI: Dynamic interfaces built with Blade and AngularJS, featuring decision-making dashboards and automated PDF/Excel generation. \n - Communication: Automated workflow notifications and granular permission management via Spatie.",
+    fullDescription: "SignUp is a comprehensive system designed for digitized public procurement management and supply chain tracking. \n\n Key highlights: \n - Architecture: Robust Laravel 8 backend with a hybrid API (REST & GraphQL) handling 100+ database tables. \n - e-Procurement: Full digitization of purchasing processes from needs expression to contract award. \n - Logistics: Real-time shipment tracking, fleet management (vehicles, drivers), and geographical delivery planning. \n - UI: Dynamic interfaces built with Blade and AngularJS, featuring decision-making dashboards and automated PDF/Excel generation. \n - Communication: Automated workflow notifications and granular permission management via Spatie.",
     tags: ["Laravel", "AngularJS", "GraphQL", "PostgreSQL"],
+    clients: [
+      { name: "SALAMA", note: "Madagascar's national central purchasing agency for essential medicines" },
+    ],
     link: "#",
     image: "/backsalama-project.png"
   },
   {
     title: "GESTIMMO",
-    description: "Rental and financial management software for real estate groups (SCI/SERTEM). Automates contract lifecycles, billing tracking, and payment collection processes.",
-    fullDescription: "GESTIMMO is a comprehensive software solution designed for rental and financial management in the real estate sector (SCI/SERTEM). \n\n Key Achievements: \n - Hybrid API Architecture: Robust Laravel 8 backend with a flexible GraphQL API for optimized data retrieval. \n - Advanced Rental Management: Contract (lease) engine with management of amendments, payment frequencies, and automated due notices. \n - Financial Engineering: Multi-flow collection system (rent, charges, deposits, water) with automatic payment allocation and unique global billing numbering. \n - Automation & Reporting: Integrated PDF engine (Rent receipts, Contracts, Inventories) and Excel export tools for accounting. \n - Security & Roles: JWT authentication and granular access rights management via Spatie Laravel Permission. \n - Reactive Interface: Dynamic frontend combining Blade and AngularJS for smooth management dashboards. \n\n Technical Environment: \n - Backend: Laravel 8, PHP 7.4/8.0, GraphQL, Eloquent ORM. \n - Frontend: AngularJS, Blade, Tailwind CSS / Bootstrap. \n - Database: MySQL / PostgreSQL (Complex transactions). \n - Tools: DomPDF, Maatwebsite Excel, Git, Postman.",
+    description: "Rental and financial management software for real estate groups. Automates contract lifecycles, billing tracking, and payment collection processes.",
+    fullDescription: "GESTIMMO is a comprehensive software solution designed for rental and financial management in the real estate sector. \n\n Key Achievements: \n - Hybrid API Architecture: Robust Laravel 8 backend with a flexible GraphQL API for optimized data retrieval. \n - Advanced Rental Management: Contract (lease) engine with management of amendments, payment frequencies, and automated due notices. \n - Financial Engineering: Multi-flow collection system (rent, charges, deposits, water) with automatic payment allocation and unique global billing numbering. \n - Automation & Reporting: Integrated PDF engine (Rent receipts, Contracts, Inventories) and Excel export tools for accounting. \n - Security & Roles: JWT authentication and granular access rights management via Spatie Laravel Permission. \n - Reactive Interface: Dynamic frontend combining Blade and AngularJS for smooth management dashboards. \n\n Technical Environment: \n - Backend: Laravel 8, PHP 7.4/8.0, GraphQL, Eloquent ORM. \n - Frontend: AngularJS, Blade, Tailwind CSS / Bootstrap. \n - Database: MySQL / PostgreSQL (Complex transactions). \n - Tools: DomPDF, Maatwebsite Excel, Git, Postman.",
     tags: ["AngularJS", "Laravel", "GraphQL", "PostgreSQL"],
+    clients: [
+      { name: "SERTEM", note: "Real estate development & promotion group, Dakar (active since 1998)" },
+      { name: "CMH Sarl", note: "Real estate management company, Senegal" },
+      { name: "BB Immobilier", note: "Real estate agency, Dakar, Senegal" },
+    ],
     link: "#",
     image: "/gestimmoCapture.png"
   },
@@ -37,18 +45,16 @@ const projects = [
     title: "SIRH — HR Information System",
     description: "Back-end and front-end modules for an HR platform, including an AI module for CV pre-selection, Laravel APIs, and Nginx server configuration.",
     tags: ["Laravel", "React", "PostgreSQL", "AI Integration"],
+    clients: [
+      { name: "CSE", note: "Compagnie Sahélienne d'Entreprises — major BTP/construction group, Senegal" },
+      { name: "Fabrimetal", note: "Steel manufacturer (MMD Steel Group), Sébikotane industrial zone, Senegal" },
+    ],
     link: "#",
     image: "/sirhCapture.png"
   },
   {
-    title: "TamTam FinConnect",
-    description: "Responsive landing page and user dashboards for project holders and investors — front-end development and UI improvements.",
-    tags: ["HTML", "Tailwind CSS", "PHP (Laravel)"],
-    link: "#",
-    image: "/tamtamCapture.png"
-  },
-  {
     title: "N-BaIoT — Network Intrusion Classification",
+    badge: "Personal project",
     description: "Botnet-related IoT network intrusion detection with an optimized Random Forest model, served through a Flask web UI.",
     tags: ["Python", "Machine Learning", "Random Forest"],
     link: "#",
@@ -139,6 +145,26 @@ const Projects = () => {
                 <h3 className="font-display text-lg font-semibold text-zinc-900 mb-2 group-hover:text-accent transition-colors duration-200">
                   {project.title}
                 </h3>
+                {project.clients ? (
+                  <div className="flex items-center gap-1.5 mb-3 flex-wrap">
+                    <span className="text-[10px] uppercase tracking-wider text-zinc-400 font-semibold">
+                      Used by
+                    </span>
+                    {project.clients.map((c) => (
+                      <span
+                        key={c.name}
+                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-accent text-white text-[11px] font-semibold whitespace-nowrap"
+                      >
+                        <Building2 size={10} />
+                        {c.name}
+                      </span>
+                    ))}
+                  </div>
+                ) : project.badge && (
+                  <span className="self-start px-2.5 py-0.5 rounded-full border border-accent/40 text-accent text-[11px] font-semibold mb-3">
+                    {project.badge}
+                  </span>
+                )}
                 <p className="text-sm text-zinc-600 leading-relaxed mb-5 line-clamp-3">
                   {project.description}
                 </p>

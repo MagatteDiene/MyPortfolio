@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink } from 'lucide-react';
+import { X, ExternalLink, Building2 } from 'lucide-react';
 import { EASE } from '../motion';
 
 const ProjectModal = ({ isOpen, onClose, project }) => {
@@ -75,7 +75,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
               )}
 
               <div className="p-6 md:p-10">
-                <div className="flex flex-wrap items-center gap-3 mb-3">
+                <div className="flex flex-wrap items-center gap-2 mb-3">
                   <h3 className="font-display text-2xl md:text-3xl font-bold text-zinc-900">
                     {project.title}
                   </h3>
@@ -85,6 +85,35 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
                     </span>
                   )}
                 </div>
+
+                {project.clients && (
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                    <span className="text-xs uppercase tracking-wider text-zinc-400 font-semibold">
+                      Used by
+                    </span>
+                    {project.clients.map((c) => (
+                      <span
+                        key={c.name}
+                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent text-white text-xs font-semibold whitespace-nowrap"
+                      >
+                        <Building2 size={12} />
+                        {c.name}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {project.clients?.some((c) => c.note) && (
+                  <div className="mb-6 space-y-1">
+                    {project.clients
+                      .filter((c) => c.note)
+                      .map((c) => (
+                        <p key={c.name} className="text-sm text-zinc-500 leading-relaxed">
+                          <span className="font-semibold text-zinc-700">{c.name}</span> — {c.note}
+                        </p>
+                      ))}
+                  </div>
+                )}
 
                 <div className="flex flex-wrap gap-2 mb-8">
                   {project.tags.map((tag) => (
