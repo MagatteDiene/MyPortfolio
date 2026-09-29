@@ -57,7 +57,7 @@ const ProjectCard = ({ project, onSelect }) => {
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.07]"
+          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.07]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         <span className="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white flex items-center justify-center text-zinc-900 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 shadow-md">
