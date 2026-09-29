@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Play, Building2 } from 'lucide-react';
+import { ArrowUpRight, Play } from 'lucide-react';
 import { fadeUp, stagger, viewport } from '../motion';
 import SectionHeading from './SectionHeading';
 import ProjectModal from './ProjectModal';
+import ProjectCard from './ProjectCard';
 
 const featured = {
   title: "SamaVoie",
@@ -80,6 +81,8 @@ const Projects = () => {
           initial="hidden"
           whileInView="show"
           viewport={viewport}
+          whileHover={{ y: -6 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 24 }}
           onClick={() => setSelectedProject(featured)}
           className="group cursor-pointer bg-zinc-950 rounded-[2rem] overflow-hidden grid lg:grid-cols-2 mb-4 hover:shadow-xl hover:shadow-zinc-300/50 transition-shadow duration-300"
         >
@@ -127,52 +130,7 @@ const Projects = () => {
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
           {projects.map((project) => (
-            <motion.article
-              key={project.title}
-              variants={fadeUp}
-              onClick={() => setSelectedProject(project)}
-              className="card overflow-hidden group cursor-pointer flex flex-col hover:border-accent/40 hover:-translate-y-1 hover:shadow-lg hover:shadow-zinc-200/60 transition-all duration-300"
-            >
-              <div className="relative aspect-video overflow-hidden bg-zinc-100 border-b border-zinc-100">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                />
-              </div>
-
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="font-display text-lg font-semibold text-zinc-900 mb-2 group-hover:text-accent transition-colors duration-200">
-                  {project.title}
-                </h3>
-                {project.clients ? (
-                  <div className="flex items-center gap-1.5 mb-3 flex-wrap">
-                    <span className="text-[10px] uppercase tracking-wider text-zinc-400 font-semibold">
-                      Used by
-                    </span>
-                    {project.clients.map((c) => (
-                      <span
-                        key={c.name}
-                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-accent text-white text-[11px] font-semibold whitespace-nowrap"
-                      >
-                        <Building2 size={10} />
-                        {c.name}
-                      </span>
-                    ))}
-                  </div>
-                ) : project.badge && (
-                  <span className="self-start px-2.5 py-0.5 rounded-full border border-accent/40 text-accent text-[11px] font-semibold mb-3">
-                    {project.badge}
-                  </span>
-                )}
-                <p className="text-sm text-zinc-600 leading-relaxed mb-5 line-clamp-3">
-                  {project.description}
-                </p>
-                <p className="mt-auto text-xs text-zinc-500 font-medium">
-                  {project.tags.join(' · ')}
-                </p>
-              </div>
-            </motion.article>
+            <ProjectCard key={project.title} project={project} onSelect={setSelectedProject} />
           ))}
         </motion.div>
 
