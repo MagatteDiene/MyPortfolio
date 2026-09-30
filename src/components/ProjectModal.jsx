@@ -1,8 +1,38 @@
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Building2 } from 'lucide-react';
-import { EASE } from '../motion';
+import { EASE, fadeUp, stagger } from '../motion';
 import TechTag from './TechTag';
+
+// Splits a description into leading prose ("intro") and labeled sections
+// ("Key highlights:", "My role:", ...), each with its own prose and/or
+// bullet ("- ...") lines, so they can get distinct heading treatment.
+const parseDescription = (text) => {
+  const intro = [];
+  const sections = [];
+  let current = null;
+
+  for (const raw of text.split('\n')) {
+    const line = raw.trim();
+    if (!line) continue;
+
+    const isBullet = line.startsWith('- ');
+    const isHeading = !isBullet && line.endsWith(':') && line.length < 60;
+
+    if (isHeading) {
+      current = { heading: line.slice(0, -1), prose: [], items: [] };
+      sections.push(current);
+    } else if (isBullet) {
+      (current ?? { items: intro }).items.push(line.slice(2));
+    } else if (current) {
+      current.prose.push(line);
+    } else {
+      intro.push(line);
+    }
+  }
+
+  return { intro, sections };
+};
 
 const ProjectModal = ({ isOpen, onClose, project }) => {
   useEffect(() => {
@@ -20,7 +50,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
 
   if (!project) return null;
 
-  const paragraphs = (project.fullDescription || project.description).split('\n');
+  const { intro, sections } = parseDescription(project.fullDescription || project.description);
 
   return (
     <AnimatePresence>
@@ -122,13 +152,59 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
                   ))}
                 </div>
 
-                <div className="columns-1 lg:columns-2 gap-x-10 space-y-3">
-                  {paragraphs.map((paragraph, i) => (
-                    <p key={i} className="text-zinc-600 leading-relaxed whitespace-pre-line break-inside-avoid">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
+                {intro.length > 0 && (
+                  <div className="space-y-3 mb-8 max-w-3xl">
+                    {intro.map((paragraph, i) => (
+                      <p key={i} className="text-zinc-600 leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                )}
+
+                {sections.length > 0 && (
+                  <motion.div
+                    key={project.title}
+                    initial="hidden"
+                    animate="show"
+                    variants={stagger}
+                    className="grid md:grid-cols-2 gap-x-10 gap-y-8"
+                  >
+                    {sections.map((section, i) => (
+                      <motion.div key={section.heading} variants={fadeUp} className="break-inside-avoid">
+                        <div className="flex items-center gap-2.5 mb-3">
+                          <span className="flex items-center justify-center w-6 h-6 rounded-full bg-accent/10 text-accent text-[11px] font-bold shrink-0">
+                            {String(i + 1).padStart(2, '0')}
+                          </span>
+                          <h4 className="font-display text-base md:text-lg font-bold text-accent">
+                            {section.heading}
+                          </h4>
+                        </div>
+
+                        {section.prose.length > 0 && (
+                          <div className="space-y-2 mb-2 pl-8">
+                            {section.prose.map((paragraph, j) => (
+                              <p key={j} className="text-sm text-zinc-600 leading-relaxed">
+                                {paragraph}
+                              </p>
+                            ))}
+                          </div>
+                        )}
+
+                        {section.items.length > 0 && (
+                          <ul className="space-y-2 pl-8">
+                            {section.items.map((item, j) => (
+                              <li key={j} className="flex items-start gap-2.5 text-sm text-zinc-600 leading-relaxed">
+                                <span className="mt-[7px] w-1 h-1 rounded-full bg-accent/50 shrink-0" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                )}
 
                 {project.link && project.link !== '#' && (
                   <a
