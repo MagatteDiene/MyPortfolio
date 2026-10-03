@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import ScrollProgress from './components/ScrollProgress';
 import Hero from './components/Hero';
 import TechMarquee from './components/TechMarquee';
+import Showreel from './components/Showreel';
 import About from './components/About';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
@@ -19,6 +20,7 @@ function App() {
       <main>
         <Hero />
         <TechMarquee />
+        <Showreel />
         <About />
         <Skills />
         <Experience />
