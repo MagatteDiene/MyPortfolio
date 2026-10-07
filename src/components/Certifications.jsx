@@ -34,6 +34,13 @@ const certifications = [
     pdf: "/Certification_Introduction_to_generativeAI_for_software_Development.pdf",
   },
   {
+    title: "GitHub Foundations",
+    issuer: "DataCamp",
+    date: "2026",
+    image: "/Github-Foundation-Datacamp-Certification.png",
+    pdf: "/Github-Foundation-Datacamp-Certification.pdf",
+  },
+  {
     title: "Foundational C# with Microsoft",
     issuer: "Microsoft (freeCodeCamp)",
     date: "2026",
