@@ -62,8 +62,8 @@ const Hero = () => {
               variants={fadeUp}
               className="text-zinc-600 text-lg leading-relaxed max-w-xl mb-10"
             >
-              Graduate of Polytechnic School of Dakar (ESP) in Computer Science.
-              Fullstack Developer (Backend Focus) at HTSOFT since November 2024,
+              Computer Science graduate of Polytechnic School of Dakar (ESP), now pursuing
+              a Master 2 in AI &amp; Big Data. Fullstack Developer (Backend Focus) at HTSOFT since November 2024,
               building Laravel applications with AngularJS and React — and hybrid RAG
               systems on the AI side.
             </motion.p>

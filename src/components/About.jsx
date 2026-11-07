@@ -50,7 +50,8 @@ const About = () => (
         >
           <motion.p variants={fadeUp}>
             I'm a Computer Science graduate of Polytechnic School of Dakar (ESP),
-            working as a Fullstack Developer (Backend Focus) at HTSOFT Sénégal since November 2024.
+            working as a Fullstack Developer (Backend Focus) at HTSOFT Sénégal since November 2024,
+            and I'm currently pursuing a Master 2 in Artificial Intelligence and Big Data at ESP.
             On the research side, I built SamaVoie, a hybrid RAG system for academic guidance in
             Senegal, as my thesis project.
           </motion.p>
