@@ -4,13 +4,6 @@ import SectionHeading from './SectionHeading';
 
 const education = [
   {
-    degree: "Master 2 in Artificial Intelligence and Big Data (IABD)",
-    school: "Polytechnic School of Dakar (ESP)",
-    year: "2026 — 2027",
-    status: "In progress",
-    description: "In progress. Thesis defense expected in July 2027. Program focused on the design and implementation of massive data management systems and AI applications: Big Data platforms, distributed computing, advanced functional programming, Big Data analysis, Deep Learning models and algorithms, model training and optimization."
-  },
-  {
     degree: "Technology Engineering Degree in Computer Science",
     school: "Polytechnic School of Dakar (ESP)",
     year: "2024 — 2026",
@@ -53,18 +46,7 @@ const Education = () => (
               index === education.length - 1 ? 'border-b' : ''
             }`}
           >
-            <div className="pt-0.5">
-              <p className="font-display font-semibold text-accent">{edu.year}</p>
-              {edu.status && (
-                <span className="inline-flex items-center gap-1.5 mt-2 px-2.5 py-0.5 rounded-full border border-accent/40 text-accent text-[11px] font-semibold">
-                  <span className="relative flex w-1.5 h-1.5">
-                    <span className="absolute inline-flex w-full h-full rounded-full bg-accent opacity-60 motion-safe:animate-ping" />
-                    <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-accent" />
-                  </span>
-                  {edu.status}
-                </span>
-              )}
-            </div>
+            <p className="font-display font-semibold text-accent pt-0.5">{edu.year}</p>
             <div>
               <h3 className="font-display text-xl font-semibold text-zinc-900 mb-1 group-hover:text-accent transition-colors duration-200">
                 {edu.degree}
