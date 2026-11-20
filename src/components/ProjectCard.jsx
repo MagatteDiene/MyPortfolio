@@ -10,6 +10,7 @@ import {
 import { ArrowUpRight, Building2 } from 'lucide-react';
 import { fadeUp } from '../motion';
 import TechTag from './TechTag';
+import ProjectTypeBadge from './ProjectTypeBadge';
 
 const ProjectCard = ({ project, onSelect }) => {
   const ref = useRef(null);
@@ -67,11 +68,13 @@ const ProjectCard = ({ project, onSelect }) => {
       </div>
 
       <div className="relative p-6 flex flex-col flex-1">
+        <ProjectTypeBadge type={project.type} context={project.context} className="self-start mb-3" />
+
         <h3 className="font-display text-lg font-semibold text-zinc-900 mb-2 group-hover:text-accent transition-colors duration-200">
           {project.title}
         </h3>
 
-        {project.clients ? (
+        {project.clients && (
           <div className="flex items-center gap-1.5 mb-3 flex-wrap">
             <span className="text-[10px] uppercase tracking-wider text-zinc-400 font-semibold">
               Used by
@@ -86,10 +89,6 @@ const ProjectCard = ({ project, onSelect }) => {
               </span>
             ))}
           </div>
-        ) : project.badge && (
-          <span className="self-start px-2.5 py-0.5 rounded-full border border-accent/40 text-accent text-[11px] font-semibold mb-3">
-            {project.badge}
-          </span>
         )}
 
         <p className="text-sm text-zinc-600 leading-relaxed mb-5 line-clamp-3">

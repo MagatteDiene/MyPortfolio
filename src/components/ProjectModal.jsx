@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Building2 } from 'lucide-react';
 import { EASE, fadeUp, stagger } from '../motion';
 import TechTag from './TechTag';
+import ProjectTypeBadge from './ProjectTypeBadge';
 
 // Splits a description into leading prose ("intro") and labeled sections
 // ("Key highlights:", "My role:", ...), each with its own prose and/or
@@ -110,11 +111,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
                   <h3 className="font-display text-2xl md:text-3xl font-bold text-zinc-900">
                     {project.title}
                   </h3>
-                  {project.badge && (
-                    <span className="px-2.5 py-1 rounded-md border border-accent/40 text-accent text-[11px] font-semibold uppercase tracking-wider">
-                      {project.badge}
-                    </span>
-                  )}
+                  <ProjectTypeBadge type={project.type} context={project.context} />
                 </div>
 
                 {project.clients && (

@@ -6,10 +6,12 @@ import SectionHeading from './SectionHeading';
 import ProjectModal from './ProjectModal';
 import ProjectCard from './ProjectCard';
 import TechTag from './TechTag';
+import ProjectTypeBadge from './ProjectTypeBadge';
 
 const featured = {
   title: "SamaVoie",
-  badge: "Research · Thesis project",
+  type: "thesis",
+  context: "ESP Dakar",
   description: "Thesis project: a hybrid RAG system for academic guidance in Senegal, combining dense retrieval and BM25 with RRF fusion and cross-encoder reranking.",
   fullDescription: "Thesis title: \"Design and implementation of an intelligent web platform for academic guidance in Senegal based on a RAG architecture and LLMs.\" \n\n SamaVoie is a hybrid Retrieval-Augmented Generation (RAG) system designed as my thesis project to help students in Senegal navigate academic orientation. \n\n Key highlights: \n - Hybrid Retrieval: combines dense vector search (ChromaDB) with sparse lexical search (BM25) to maximize recall on both semantic and keyword queries. \n - Fusion: candidate results from both retrievers are merged using Reciprocal Rank Fusion (RRF). \n - Reranking: a cross-encoder reranks fused candidates for higher precision before generation. \n - Generation: answers are produced by Llama-3.3-70B served via the Groq API. \n - Orchestration: the full retrieval-fusion-rerank-generation pipeline is orchestrated with LangChain. \n\n Status: this is a research/thesis project and is not deployed as a public product.",
   tags: ["Python", "LangChain", "ChromaDB", "FastAPI", "Groq API"],
@@ -21,6 +23,7 @@ const featured = {
 const projects = [
   {
     title: "GMAO — Fleet Maintenance Management",
+    type: "company",
     description: "Complete CMMS for a Senegalese civil engineering & earthworks group: a large equipment fleet, field usage tracking, work orders, preventive maintenance, subcontracting, billing, and reliability KPIs (MTBF, MTTR, availability).",
     fullDescription: "GMAO is a full Computerized Maintenance Management System built for two entities of a Senegalese civil engineering & earthworks group, SOSETER and CSE, which together operate a large fleet of heavy equipment broken down into equipment, sub-assemblies and parts. The app centralizes the entire equipment lifecycle — inventory, daily counter tracking, work requests and orders, preventive maintenance, subcontracting, internal billing, and reliability KPIs — and integrates with the group's subcontractor management platform. It started as a full functional prototype seeded from real operational client documents to validate the specifications, then evolved module by module into a production app on a Laravel/PostgreSQL API. \n\n Key highlights: \n - Equipment registry: a large fleet in a recursive engine → sub-assembly → part hierarchy, with idempotent Excel import from the client's real files — re-importable without duplicating or overwriting manual entries. \n - Daily usage tracking: field-sheet-accurate entry (running hours, breakdown/availability time, fuel, cost-code split) with a monthly validation workflow — entry, then manager sign-off with password re-signature, then lock. \n - Work orders: DI → OT pipeline with automatic prioritization, a detailed multi-status OT workflow (prep, parts, labor, parent/child OTs, failure-analysis closing report with e-signature), Gantt with critical path, and a PERT view. \n - Preventive maintenance: threshold-based plans by usage level, per-equipment schedules, printable weekly planning, automatic OT generation. \n - Subcontracting: bidirectional sync with the group's subcontractor platform (all-or-nothing, nothing ever deleted — missing records are flagged absent) and a REST API exposing billing rates hourly, daily, or monthly. \n - Finance: budget vs. actual by cost center, Pareto and lifecycle-cost analysis, internal equipment billing between sites, multi-currency display (FCFA/EUR/USD). \n - Reliability dashboards: MTBF, MTTR, availability, Pareto failure analysis, FMECA (AMDEC), ABC parts analysis. \n - Security: token auth, a fine-grained role matrix (admin/manager/technician/storekeeper/timekeeper) enforced server- and client-side, per-user scope by entity/zone/site, audit log. \n\n Toughest engineering problems: \n - Messy real-world import: a large source file with real-world data quality issues (inconsistent labels, out-of-order hierarchy, reference cycles) — solved with a two-pass import (majority-vote labeling, key normalization, longest-prefix matching) inside a single transaction, importing the whole file quickly and reliably. \n - Faithful Excel generation: server-side regeneration of the client's official equipment usage sheet — layout, formulas, colors and signature block reproduced exactly, so it can replace manual entry outright. \n - Recursive equipment moves: relocating a unit cascades to every sub-assembly via a cycle-safe recursive query. \n - Prototype-to-production migration: business rules were proven and client-validated in the functional prototype, then ported to the Laravel/PostgreSQL API module by module without ever interrupting the live demo. \n\n Technical environment: \n - Front-end: React 19, TypeScript, Vite, React Router 7, Tailwind CSS 4, Radix UI (shadcn/ui), Recharts, custom-built Gantt/PERT/calendar/tree views, SheetJS, GraphQL reads + REST writes. \n - Back-end: PHP 8 / Laravel, PostgreSQL (recursive CTEs, pg_trgm trigram search), REST API (Swagger/OpenAPI) + read-only GraphQL, Laravel Sanctum, PhpSpreadsheet, Guzzle, Artisan commands for import/sync/bulk moves. \n - Deployment: Ubuntu, Nginx, PHP-FPM, HTTPS via Let's Encrypt. \n\n My role: \n full-stack developer — analyzed the client's specifications, built the functional prototype and then the production app end to end (front and back), and worked directly with the client throughout to validate business rules and refine the demo into the real system.",
     tags: ["React 19", "TypeScript", "Laravel", "PostgreSQL", "GraphQL"],
@@ -33,6 +36,7 @@ const projects = [
   },
   {
     title: "SignUp",
+    type: "company",
     description: "Large-scale application for digitized procurement and logistics tracking: e-Procurement (tenders, submission, evaluation), fleet management, shipment tracking, and automated reporting.",
     fullDescription: "SignUp is a comprehensive system designed for digitized public procurement management and supply chain tracking. \n\n Key highlights: \n - Architecture: Robust Laravel 8 backend with a hybrid API (REST & GraphQL) covering the full procurement workflow. \n - e-Procurement: Full digitization of purchasing processes from needs expression to contract award. \n - Logistics: Real-time shipment tracking, fleet management (vehicles, drivers), and geographical delivery planning. \n - UI: Dynamic interfaces built with Blade and AngularJS, featuring decision-making dashboards and automated PDF/Excel generation. \n - Communication: Automated workflow notifications and granular permission management via Spatie.",
     tags: ["Laravel", "AngularJS", "GraphQL", "PostgreSQL"],
@@ -44,6 +48,7 @@ const projects = [
   },
   {
     title: "GESTIMMO",
+    type: "company",
     description: "Multi-tenant real estate ERP covering the full property lifecycle — portfolio, leasing, billing, maintenance, and owner/tenant accounting — delivered as a shared codebase serving several agencies, each with tailored modules.",
     fullDescription: "Reyhanimmo is a full ERP for real estate agencies, property managers and co-ownership syndics, covering the entire lifecycle of a property: portfolio inventory, leasing, contract signing, billing, rent collection, maintenance tracking, owner/tenant accounting, and lease termination. The same codebase is delivered to several agencies, each on its own instance with tailored modules (furnished/short-term rental, sale promises, check handling, owner accounts…). \n\n Key highlights: \n - Portfolio management: buildings, villas, blocks, apartments and commercial units, with parking/storage, floor structure, photo galleries, document archive, and listing publication. \n - Parties & directories: owners, tenants/co-tenants, vendors, caretakers and management teams, with dedicated directories across multiple agencies in one instance. \n - Contracts: residential & commercial leases (fixed or open-ended) generated from templates, furnished/short-term rentals (with booking source — Airbnb, Booking…), rent-to-own and sale promises, management mandates, amendments, and e-signature on contracts and payment notices. \n - Billing & collections: payment notices, rent and deposit calls, multi-line invoices, water and intervention invoices, quotes, multiple payment methods, receipts, VAT/property tax handling, check deposit slips, owner payouts and condo fee tracking. \n - Accounting & reporting: tenant and owner ledgers (debit/credit/balance), vendor accounts, aging and arrears reports, deposit status, commission tracking, dashboards with per-building/per-unit financials, a wide range of PDF templates and Excel exports. \n - Maintenance: intervention requests from tenants or managers, scheduling and reports with photos, move-in/move-out inspections room by room with PDF reports. \n - Client relations: internal messaging with real-time notifications, automated payment reminders by email, satisfaction surveys, insurance tracking. \n - Admin: fine-grained per-feature roles and permissions, bulk Excel import (properties, tenants, owners, contracts…) processed as background jobs, QR code generation. \n\n Technical environment: \n - Back-end: PHP / Laravel 8, PostgreSQL, GraphQL API (rebing/graphql-laravel), JWT auth with spatie/laravel-permission, Redis queues and cache, Laravel scheduler for automated reminders, PDF generation (DomPDF, mPDF, Snappy/wkhtmltopdf, with merging), Excel import/export (Maatwebsite, PhpSpreadsheet), Sentry error monitoring. \n - Front-end: AngularJS SPA (ui-router), jQuery, Blade, Tailwind CSS, Sass, Laravel Mix/Webpack, Gulp, Chart.js and DevExtreme for charts and grids, DataTables, Select2, Dropzone, Summernote, Signature Pad, intl-tel-input. \n\n My role: \n full-stack developer — built and maintained modules on both the AngularJS front-end and the Laravel/GraphQL back-end across several client instances of the platform, and led user training sessions and client meetings.",
     tags: ["Laravel", "AngularJS", "GraphQL", "PostgreSQL"],
@@ -57,6 +62,7 @@ const projects = [
   },
   {
     title: "SIRH — HR Information System",
+    type: "company",
     description: "Back-end and front-end modules for an HR platform, including an AI module for CV pre-selection, Laravel APIs, and Nginx server configuration.",
     tags: ["Laravel", "React", "PostgreSQL", "AI Integration"],
     clients: [
@@ -68,7 +74,8 @@ const projects = [
   },
   {
     title: "N-BaIoT — Network Intrusion Classification",
-    badge: "Personal project",
+    type: "academic",
+    context: "ESP Dakar",
     description: "Botnet-related IoT network intrusion detection with an optimized Random Forest model, served through a Flask web UI.",
     tags: ["Python", "Machine Learning", "Random Forest"],
     link: "#",
@@ -100,9 +107,7 @@ const Projects = () => {
           className="group cursor-pointer bg-zinc-950 rounded-[2rem] overflow-hidden grid lg:grid-cols-2 mb-4 hover:shadow-xl hover:shadow-zinc-300/50 transition-shadow duration-300"
         >
           <div className="p-8 md:p-12 flex flex-col justify-center order-2 lg:order-1">
-            <span className="self-start px-2.5 py-1 rounded-md border border-accent-light/50 text-accent-light text-[11px] font-semibold uppercase tracking-wider mb-5">
-              {featured.badge}
-            </span>
+            <ProjectTypeBadge type={featured.type} context={featured.context} dark className="self-start mb-5" />
             <h3 className="font-display text-2xl md:text-4xl font-bold text-white mb-4">
               {featured.title}
             </h3>
